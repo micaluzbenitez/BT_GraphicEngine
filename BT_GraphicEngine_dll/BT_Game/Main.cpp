@@ -1,4 +1,4 @@
-#include "..\BT_GraphicEngine_dll\src\BaseGame\BaseGame.h"
+#include "BaseGame.h"
 
 void main()
 {
