@@ -1,10 +1,8 @@
 #include "BaseGame.h"
 
-int main(void)
+void main()
 {
-	BaseGame baseGame;
-
-	baseGame.Init();
-
-	return 0;
+	BaseGame* baseGame = new BaseGame();
+	baseGame->Init();
+	delete baseGame;
 }
