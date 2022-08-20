@@ -1,32 +1,34 @@
+#include "BaseGame.h"
+
 #include <GLFW/glfw3.h>
 
 int main(void)
 {
-    GLFWwindow* window;
+    GLFWwindow* window;                                                // codigo de window
+                                                                       // codigo de window
+    /* Initialize the library */                                       // codigo de window
+    if (!glfwInit())                                                   // codigo de window
+        return -1;                                                     // codigo de window
+                                                                       // codigo de window
+    /* Create a windowed mode window and its OpenGL context */         // codigo de window
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);    // codigo de window
+    if (!window)                                                       // codigo de window
+    {                                                                  // codigo de window
+        glfwTerminate();                                               // codigo de window
+        return -1;                                                     // codigo de window
+    }                                                                  // codigo de window
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
-
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+    /* Make the window's context current */         // codigo de renderizado
+    glfwMakeContextCurrent(window);                 // codigo de renderizado
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        /* Render here */                           // codigo de renderizado
+        glClear(GL_COLOR_BUFFER_BIT);               // codigo de renderizado
+                                                    // codigo de renderizado
+        /* Swap front and back buffers */           // codigo de renderizado
+        glfwSwapBuffers(window);                    // codigo de renderizado
 
         /* Poll for and process events */
         glfwPollEvents();
