@@ -2,7 +2,26 @@
 
 #include <GLFW/glfw3.h>
 
-int main(void)
+BaseGame::BaseGame()
+{
+    _renderer = nullptr;
+    _window = nullptr;
+}
+
+BaseGame::~BaseGame()
+{
+    if (_window != nullptr) {
+        _window = nullptr;
+        delete _window;
+    }
+
+    if (_renderer != nullptr) {
+        _renderer = nullptr;
+        delete _renderer;
+    }
+}
+
+bool BaseGame::Init()
 {
     GLFWwindow* window;                                                // codigo de window
                                                                        // codigo de window
