@@ -35,5 +35,8 @@
     <ClInclude Include="src\Renderer\Renderer.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Export.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

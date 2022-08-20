@@ -4,21 +4,21 @@
 
 BaseGame::BaseGame()
 {
-    //_renderer = nullptr;
-    //_window = nullptr;
+    _renderer = nullptr;
+    _window = nullptr;
 }
 
 BaseGame::~BaseGame()
 {
-    //if (_window != nullptr) {
-    //    _window = nullptr;
-    //    delete _window;
-    //}
-    //
-    //if (_renderer != nullptr) {
-    //    _renderer = nullptr;
-    //    delete _renderer;
-    //}
+    if (_window != nullptr) {
+        _window = nullptr;
+        delete _window;
+    }
+    
+    if (_renderer != nullptr) {
+        _renderer = nullptr;
+        delete _renderer;
+    }
 }
 
 bool BaseGame::Init()

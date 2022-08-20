@@ -1,7 +1,10 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-class Renderer
+#include "Export.h"
+using namespace std;
+
+class DllImport Renderer
 {
 private:
 

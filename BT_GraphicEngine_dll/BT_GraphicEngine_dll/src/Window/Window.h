@@ -2,8 +2,10 @@
 #define WINDOW_H
 
 //#include <GLFW/glfw3.h>
+#include "Export.h"
+using namespace std;
 
-class Window
+class DllImport Window
 {
 private:
 	//GLFWwindow* window;
