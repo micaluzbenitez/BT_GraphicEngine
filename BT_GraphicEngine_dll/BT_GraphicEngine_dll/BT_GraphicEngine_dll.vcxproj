@@ -112,7 +112,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)BT_GraphicEngine_dll\src;$(SolutionDir)lib\lib</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist "$(SolutionDir)bin\$(configuration)" MKDIR "$(SolutionDir)bin\$(configuration)</Command>
+      <Command>if not exist "$(SolutionDir)bin\$(configuration)" MKDIR "$(SolutionDir)bin\$(configuration)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>XCOPY "$(ProjectDir)bin\$(Configuration)\BT_GraphicEngine_dll.dll" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
@@ -140,7 +140,7 @@ XCOPY "$(SolutionDir)lib\lib\glfw3.dll" "$(SolutionDir)bin\$(Configuration)" /e 
       </EntryPointSymbol>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist "$(SolutionDir)bin\$(configuration)" MKDIR "$(SolutionDir)bin\$(configuration)</Command>
+      <Command>if not exist "$(SolutionDir)bin\$(configuration)" MKDIR "$(SolutionDir)bin\$(configuration)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>XCOPY "$(ProjectDir)bin\$(Configuration)\BT_GraphicEngine_dll.dll" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
