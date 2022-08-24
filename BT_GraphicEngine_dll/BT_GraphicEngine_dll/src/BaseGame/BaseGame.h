@@ -15,7 +15,11 @@ private:
 public:
 	BaseGame();
 	~BaseGame();
+	void RunBaseGame();
 	bool Init();
+	void Update();
+	void Draw();
+	void Deinit();
 };
 
 #endif
