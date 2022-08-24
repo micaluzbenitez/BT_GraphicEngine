@@ -23,36 +23,31 @@ BaseGame::~BaseGame()
 
 bool BaseGame::Init()
 {
-    GLFWwindow* window;                                                // codigo de window
-                                                                       // codigo de window
-    /* Initialize the library */                                       // codigo de window
-    if (!glfwInit())                                                   // codigo de window
-        return -1;                                                     // codigo de window
-                                                                       // codigo de window
-    /* Create a windowed mode window and its OpenGL context */         // codigo de window
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);    // codigo de window
-    if (!window)                                                       // codigo de window
-    {                                                                  // codigo de window
-        glfwTerminate();                                               // codigo de window
-        return -1;                                                     // codigo de window
-    }                                                                  // codigo de window
+    _window = new Window();
+    _renderer = new Renderer();                                           
+                                                                     
+    /* Initialize the library */                                     
+    _window->InitLibrary();                                                
+                                                                    
+    /* Create a windowed mode window and its OpenGL context */      
+    _window->CreateWindow();
 
-    /* Make the window's context current */         // codigo de renderizado
-    glfwMakeContextCurrent(window);                 // codigo de renderizado
+    /* Make the window's context current */         
+    glfwMakeContextCurrent(_window->GetWindow());   // codigo de renderizado (preguntar)
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
+    while (!_window->WindowClose(_window->GetWindow()))
     {
-        /* Render here */                           // codigo de renderizado
+        /* Render here */                           
         glClear(GL_COLOR_BUFFER_BIT);               // codigo de renderizado
-                                                    // codigo de renderizado
-        /* Swap front and back buffers */           // codigo de renderizado
-        glfwSwapBuffers(window);                    // codigo de renderizado
+                                                    
+        /* Swap front and back buffers */           
+        glfwSwapBuffers(_window->GetWindow());      // codigo de renderizado
 
         /* Poll for and process events */
-        glfwPollEvents();
+        _window->PollEvents();
     }
 
-    glfwTerminate();
+    _window->TerminateLibrary();
     return 0;
 }
