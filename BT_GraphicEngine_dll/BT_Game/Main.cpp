@@ -3,6 +3,6 @@
 void main()
 {
 	BaseGame* baseGame = new BaseGame();
-	baseGame->Init();
+	baseGame->RunBaseGame();
 	delete baseGame;
 }
