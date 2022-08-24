@@ -1,7 +1,6 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <glew.h>
 #include <glfw3.h>
 #include "Export.h"
 using namespace std;

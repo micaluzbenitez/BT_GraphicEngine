@@ -1,6 +1,8 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
+#include <glfw3.h>
+#include <iostream>
 #include "Window/Window.h"
 #include "Renderer/Renderer.h"
 #include "Export.h"

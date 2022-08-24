@@ -1,8 +1,5 @@
-#include "BaseGame.h"
-
 #include <glew.h>
-#include <glfw3.h>
-#include <iostream>
+#include "BaseGame.h"
 
 BaseGame::BaseGame()
 {
@@ -24,8 +21,7 @@ BaseGame::~BaseGame()
 }
 
 void BaseGame::RunBaseGame()
-{
-    
+{    
     if (Init())
     {
 
@@ -38,10 +34,9 @@ void BaseGame::RunBaseGame()
 
         Deinit();
     }
-
     else
     {
-        std::cout << "Error creating the window";
+        cout << "Error creating the window";
     }
 }
 
@@ -62,7 +57,7 @@ bool BaseGame::Init()
     //if (glewInit() != GLEW_OK)
     //    std::cout << "Error GLEW!" << std::endl;
     //
-    std::cout << glGetString(GL_VERSION) << std::endl;
+    cout << glGetString(GL_VERSION) << endl;
 
     return _window != nullptr;
 }
@@ -78,8 +73,14 @@ void BaseGame::Update()
 void BaseGame::Draw()
 {
     /* Render here */
-        //_renderer->ClearScreen();
+    //_renderer->ClearScreen();
     _renderer->ClearScreenWithColor(1, 0, 0, 1);
+
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-0.5f, -0.5f);
+    glVertex2f( 0.0f,  0.5f);
+    glVertex2f( 0.5f, -0.5f);
+    glEnd();
 
     /* Swap front and back buffers */
     _renderer->SwapBuffers(_window->GetWindow());
