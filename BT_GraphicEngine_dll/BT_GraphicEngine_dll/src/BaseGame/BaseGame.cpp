@@ -1,5 +1,6 @@
 #include "BaseGame.h"
 
+#include <glew.h>
 #include <glfw3.h>
 #include <iostream>
 
@@ -57,6 +58,11 @@ bool BaseGame::Init()
 
     /* Make the window's context current */
     _window->MakeWindowContextCurrent();
+
+    //if (glewInit() != GLEW_OK)
+    //    std::cout << "Error GLEW!" << std::endl;
+    //
+    std::cout << glGetString(GL_VERSION) << std::endl;
 
     return _window != nullptr;
 }
