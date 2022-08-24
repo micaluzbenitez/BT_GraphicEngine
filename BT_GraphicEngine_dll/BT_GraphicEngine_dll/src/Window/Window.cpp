@@ -29,7 +29,13 @@ int Window::CreateWindow()
 	}
 }
 
-bool Window::WindowClose(GLFWwindow* window)
+void Window::MakeWindowContextCurrent()
+{
+
+	glfwMakeContextCurrent(window);
+}
+
+bool Window::WindowShouldClose()
 {
 	return glfwWindowShouldClose(window);
 }

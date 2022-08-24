@@ -15,8 +15,8 @@ public:
 	~Window();
 	int InitLibrary();
 	int CreateWindow();
-	//void MakeWindowContextCurrent(GLFWwindow* window);
-	bool WindowClose(GLFWwindow* window);
+	void MakeWindowContextCurrent();
+	bool WindowShouldClose();
 	void PollEvents();
 	void TerminateLibrary();
 	GLFWwindow* GetWindow();
