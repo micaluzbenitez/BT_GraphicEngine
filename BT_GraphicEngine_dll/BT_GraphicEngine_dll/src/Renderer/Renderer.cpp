@@ -26,3 +26,33 @@ void Renderer::SwapBuffers(GLFWwindow* window)
 	// Swap front and back buffers
 	glfwSwapBuffers(window);
 }
+
+int Renderer::InitGLEW()
+{
+	if (glewInit() != GLEW_OK) return -1;
+}
+
+void Renderer::AssignVertexBuffer(GLsizei buffersQuantity, GLuint& buffer)
+{
+	glGenBuffers(1, &buffer);
+}
+
+void Renderer::SetVertexBufferTarget(GLenum target, GLuint buffer)
+{
+	glBindBuffer(target, buffer);
+}
+
+void Renderer::SetVertexBufferData(GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage)
+{
+	glBufferData(target, size, data, usage);
+}
+
+void Renderer::DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count)
+{
+	glDrawArrays(primitive, offset, count);
+}
+
+void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices)
+{
+	glDrawElements(primitive, count, type, indices);
+}

@@ -54,10 +54,7 @@ bool BaseGame::Init()
     _window->MakeWindowContextCurrent();
 
     /* GLEW init */
-    if (glewInit() != GLEW_OK)
-        std::cout << "Error GLEW!" << std::endl;
-    
-    cout << glGetString(GL_VERSION) << endl;
+    _renderer->InitGLEW();
 
     /* GLEW buffer */
     float positions[6] =
@@ -68,9 +65,9 @@ bool BaseGame::Init()
     };
 
     unsigned int buffer;
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer); 
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
+    _renderer->AssignVertexBuffer(1, buffer);
+    _renderer->SetVertexBufferTarget(GL_ARRAY_BUFFER, buffer);
+    _renderer->SetVertexBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
 
     return _window != nullptr;
 }
@@ -86,8 +83,8 @@ void BaseGame::Draw()
     //_renderer->ClearScreen();
     _renderer->ClearScreenWithColor(1, 0, 0, 1);
 
-    /* Draw mode */
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    /* GLEW draw mode */
+    _renderer->DrawWithoutIndexBuffer(GL_TRIANGLES, 0, 3);
 
     /* Swap front and back buffers */
     _renderer->SwapBuffers(_window->GetWindow());
