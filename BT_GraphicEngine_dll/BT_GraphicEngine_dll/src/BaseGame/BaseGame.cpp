@@ -53,13 +53,13 @@ bool BaseGame::Init()
     /* Make the window's context current */
     _window->MakeWindowContextCurrent();
 
-    /* GLEW */
+    /* GLEW init */
     if (glewInit() != GLEW_OK)
         std::cout << "Error GLEW!" << std::endl;
     
     cout << glGetString(GL_VERSION) << endl;
 
-    /* GLEW buffers */
+    /* GLEW buffer */
     float positions[6] =
     {
         -0.5f, -0.5f,
@@ -69,7 +69,7 @@ bool BaseGame::Init()
 
     unsigned int buffer;
     glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer); 
     glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
 
     return _window != nullptr;
@@ -77,25 +77,14 @@ bool BaseGame::Init()
 
 void BaseGame::Update()
 {
-    /* Update here */
-
     /* Poll for and process events */
     _window->PollEvents();
 }
 
 void BaseGame::Draw()
 {
-    /* Render here */
-
     //_renderer->ClearScreen();
     _renderer->ClearScreenWithColor(1, 0, 0, 1);
-
-    /* Draw triangle */
-    //glBegin(GL_TRIANGLES);
-    //glVertex2f(-0.5f, -0.5f);
-    //glVertex2f( 0.0f,  0.5f);
-    //glVertex2f( 0.5f, -0.5f);
-    //glEnd();
 
     /* Draw mode */
     glDrawArrays(GL_TRIANGLES, 0, 3);

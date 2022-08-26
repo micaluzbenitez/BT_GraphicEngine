@@ -10,17 +10,19 @@ Renderer::~Renderer()
 
 void Renderer::ClearScreen()
 {
-	glClear(GL_COLOR_BUFFER_BIT); /* Clears the context window */
+	// Clears the context window
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void Renderer::ClearScreenWithColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 {
-	glClearColor(r, g, b, a); /* Sets the color to clear the screen */ 
+	// Sets the color to clear the screen and clears the context window
+	glClearColor(r, g, b, a);
 	ClearScreen();
 }
 
 void Renderer::SwapBuffers(GLFWwindow* window)
 {
-	/* Swap front and back buffers */
+	// Swap front and back buffers
 	glfwSwapBuffers(window);
 }
