@@ -1,4 +1,3 @@
-#include <glew.h>
 #include "BaseGame.h"
 
 BaseGame::BaseGame()

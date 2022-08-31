@@ -1,6 +1,7 @@
 #ifndef BASEGAME_H
 #define BASEGAME_H
 
+#include <glew.h>
 #include <glfw3.h>
 #include <iostream>
 #include "Window/Window.h"
