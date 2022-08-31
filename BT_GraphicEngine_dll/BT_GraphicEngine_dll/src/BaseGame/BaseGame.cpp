@@ -68,8 +68,8 @@ bool BaseGame::Init()
     _renderer->SetVertexBufferTarget(GL_ARRAY_BUFFER, buffer);
     _renderer->SetVertexBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
 
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+    _renderer->EnableVertexAttribArray(0);
+    _renderer->DefineVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
     return _window != nullptr;
 }

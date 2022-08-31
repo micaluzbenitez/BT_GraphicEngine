@@ -22,6 +22,11 @@ public:
 	void SetVertexBufferData(GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage);
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
+	void EnableVertexAttribArray(GLuint index);
+	void DisableVertexAttribArray(GLuint index);
+	void EnableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index);
+	void DisableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index);
+	void DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer);
 };
 
 #endif

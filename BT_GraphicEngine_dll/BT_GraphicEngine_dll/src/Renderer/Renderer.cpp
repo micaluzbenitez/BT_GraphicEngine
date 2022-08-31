@@ -56,3 +56,28 @@ void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type,
 {
 	glDrawElements(primitive, count, type, indices);
 }
+
+void Renderer::EnableVertexAttribArray(GLuint index)
+{
+	glEnableVertexAttribArray(index);
+}
+
+void Renderer::DisableVertexAttribArray(GLuint index)
+{
+	glDisableVertexAttribArray(index);
+}
+
+void Renderer::EnableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index)
+{
+	glEnableVertexArrayAttrib(vertexArrayObject, index);
+}
+
+void Renderer::DisableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index)
+{
+	glDisableVertexArrayAttrib(vertexArrayObject, index);
+}
+
+void Renderer::DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer)
+{
+	glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+}
