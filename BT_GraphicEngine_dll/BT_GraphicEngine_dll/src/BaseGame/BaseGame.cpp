@@ -22,7 +22,7 @@ BaseGame::~BaseGame()
 /* Create shader */
 static unsigned int CompilerShader(unsigned int type, const string& source)
 {
-    unsigned int id = glCreateShader(GL_VERTEX_SHADER);
+    unsigned int id = glCreateShader(type);
     const char* src = source.c_str();
     glShaderSource(id, 1, &src, nullptr);
     glCompileShader(id);
@@ -66,19 +66,14 @@ void BaseGame::RunBaseGame()
 {    
     if (Init())
     {
-        /* Loop until the user closes the window */
         while (!_window->WindowShouldClose())
         {
             Update();
             Draw();
         }
-
         Deinit();
     }
-    else
-    {
-        cout << "Error creating the window";
-    }
+    else cout << "Error creating the window";
 }
 
 bool BaseGame::Init()
@@ -163,6 +158,7 @@ void BaseGame::Draw()
 
 void BaseGame::Deinit()
 {
+    //glDeleteShader(shader);
     //glDeleteProgram(shader);
     _window->TerminateLibrary();
 }

@@ -77,7 +77,7 @@ void Renderer::DisableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index)
 	glDisableVertexArrayAttrib(vertexArrayObject, index);
 }
 
-void Renderer::DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer)
+void Renderer::DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset)
 {
-	glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+	glVertexAttribPointer(index, size, type, normalized, stride, offset);
 }
