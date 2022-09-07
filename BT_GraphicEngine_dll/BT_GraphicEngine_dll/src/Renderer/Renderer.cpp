@@ -2,10 +2,12 @@
 
 Renderer::Renderer()
 {
+	
 }
 
 Renderer::~Renderer()
 {
+
 }
 
 void Renderer::ClearScreen()

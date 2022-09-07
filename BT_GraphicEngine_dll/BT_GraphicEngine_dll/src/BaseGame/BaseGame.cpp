@@ -100,7 +100,7 @@ bool BaseGame::Init()
          0.0f,  0.5f,
          0.5f, -0.5f
     };
-
+    
     unsigned int buffer;
     _renderer->AssignVertexBuffer(1, buffer);
     _renderer->SetVertexBufferTarget(GL_ARRAY_BUFFER, buffer);
@@ -109,8 +109,9 @@ bool BaseGame::Init()
     /* GLEW enabled vertex attrib */
     _renderer->EnableVertexAttribArray(0);
     _renderer->DefineVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
+    
     /* Create shader */
+    /*
     string vertexShader = 
         "#version 330 core\n"
         "\n"
@@ -130,9 +131,9 @@ bool BaseGame::Init()
         "{\n"
         "   color = vec4(1.0, 0.0, 0.0, 1.0);\n"
         "}\n";
-
-    unsigned int shader = CreateShader(vertexShader, fragmentShader);
-    glUseProgram(shader);
+    */
+    //unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    
     /* ------------- */
 
     return _window != nullptr;

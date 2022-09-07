@@ -4,6 +4,7 @@
 #include <glew.h>
 #include <glfw3.h>
 #include "Export.h"
+#include "Material/Material.h"
 using namespace std;
 
 class DllImport Renderer
