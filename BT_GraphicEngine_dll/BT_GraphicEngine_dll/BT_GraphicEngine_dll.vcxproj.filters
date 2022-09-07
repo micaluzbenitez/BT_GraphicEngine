@@ -43,6 +43,12 @@
     <Filter Include="src\TileMap">
       <UniqueIdentifier>{9a8e614a-9b95-4f30-ab52-f97a8cadb165}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Triangle">
+      <UniqueIdentifier>{35ec6303-de85-4928-a134-1a7afe2332a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Square">
+      <UniqueIdentifier>{35774c97-851c-4f60-9f3a-c7b9422b4a2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseGame\BaseGame.cpp">
@@ -83,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="src\Sprite\Sprite.cpp">
       <Filter>src\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Square\Square.cpp">
+      <Filter>src\Square</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triangle\Triangle.cpp">
+      <Filter>src\Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="src\Sprite\Sprite.h">
       <Filter>src\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Square\Square.h">
+      <Filter>src\Square</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Triangle\Triangle.h">
+      <Filter>src\Triangle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
