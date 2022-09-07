@@ -28,6 +28,7 @@
     <ClCompile Include="src\Material\Material.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Shape\Shape.cpp" />
+    <ClCompile Include="src\TextureImporter\TextureImporter.cpp" />
     <ClCompile Include="src\TileMap\TileMap.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <ClInclude Include="src\Material\Material.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
     <ClInclude Include="src\Shape\Shape.h" />
+    <ClInclude Include="src\TextureImporter\TextureImporter.h" />
     <ClInclude Include="src\TileMap\TileMap.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
