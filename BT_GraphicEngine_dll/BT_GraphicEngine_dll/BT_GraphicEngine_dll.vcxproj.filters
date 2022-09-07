@@ -75,6 +75,9 @@
     <ClCompile Include="src\Input\Input.cpp">
       <Filter>src\Input</Filter>
     </ClCompile>
+    <ClCompile Include="src\TileMap\TileMap.cpp">
+      <Filter>src\TileMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="src\Input\Input.h">
       <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileMap\TileMap.h">
+      <Filter>src\TileMap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
