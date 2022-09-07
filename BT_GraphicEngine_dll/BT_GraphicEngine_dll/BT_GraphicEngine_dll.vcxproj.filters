@@ -81,6 +81,9 @@
     <ClCompile Include="src\TextureImporter\TextureImporter.cpp">
       <Filter>src\TextureImporter</Filter>
     </ClCompile>
+    <ClCompile Include="src\Sprite\Sprite.cpp">
+      <Filter>src\Sprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="src\TextureImporter\TextureImporter.h">
       <Filter>src\TextureImporter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sprite\Sprite.h">
+      <Filter>src\Sprite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
