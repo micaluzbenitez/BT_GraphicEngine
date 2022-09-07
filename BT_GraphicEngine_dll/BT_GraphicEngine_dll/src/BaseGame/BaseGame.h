@@ -4,6 +4,7 @@
 #include <glew.h>
 #include <glfw3.h>
 #include <iostream>
+#include "Material/Material.h"
 #include "Window/Window.h"
 #include "Renderer/Renderer.h"
 #include "Export.h"
