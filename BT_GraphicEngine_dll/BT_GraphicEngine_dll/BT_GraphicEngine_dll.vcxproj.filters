@@ -63,6 +63,9 @@
     <ClCompile Include="src\Animation\Animation.cpp">
       <Filter>src\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="src\CollisionManager\CollisionManager.cpp">
+      <Filter>src\CollisionManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="src\Animation\Animation.h">
       <Filter>src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionManager\CollisionManager.h">
+      <Filter>src\CollisionManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
