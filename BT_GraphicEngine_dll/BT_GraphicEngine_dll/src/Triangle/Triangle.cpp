@@ -7,3 +7,7 @@ Triangle::Triangle()
 Triangle::~Triangle()
 {
 }
+
+void Triangle::Draw()
+{
+}

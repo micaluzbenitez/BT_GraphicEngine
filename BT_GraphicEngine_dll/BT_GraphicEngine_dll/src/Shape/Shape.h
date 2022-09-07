@@ -14,6 +14,7 @@ private:
 public:
 	Shape();
 	~Shape();
+	virtual void Draw() = 0;
 };
 
 #endif   

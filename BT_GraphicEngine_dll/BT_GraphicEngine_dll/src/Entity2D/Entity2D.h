@@ -17,7 +17,7 @@ public:
 	~Entity2D();
 	void AttachMaterial(Material* newMaterial);
 	void DetachMaterial();
-	virtual void Draw();
+	virtual void Draw() = 0;
 };
 
 #endif 

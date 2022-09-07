@@ -26,7 +26,7 @@ public:
 	setters de todo
 	getters de todo
 	*/
-	virtual void Draw();
+	virtual void Draw() = 0;
 };
 
 #endif   

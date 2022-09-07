@@ -18,6 +18,3 @@ void Entity2D::DetachMaterial()
 	material = nullptr;
 }
 
-void Entity2D::Draw()
-{
-}
