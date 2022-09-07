@@ -19,6 +19,30 @@
     <Filter Include="src\Shape">
       <UniqueIdentifier>{be28f731-77be-4a48-9556-f958a403ae3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Animation">
+      <UniqueIdentifier>{f28175ee-9ebc-4a0f-bd80-a3407c2f6aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CollisionManager">
+      <UniqueIdentifier>{97653903-1432-42ab-ba46-b58af4a69acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity">
+      <UniqueIdentifier>{601f8e80-2dd6-4ef0-8a18-9e9966cc9e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity2D">
+      <UniqueIdentifier>{cfc1718a-c4cb-4c1a-81b1-f02ac47aceb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{9ddc501d-61ff-4bbc-be62-cb2f5208c646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Sprite">
+      <UniqueIdentifier>{b90153af-9aeb-44e0-b0fb-f7c49489d867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TextureImporter">
+      <UniqueIdentifier>{b854ea2e-4626-4dd3-a853-bda138f57767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TileMap">
+      <UniqueIdentifier>{9a8e614a-9b95-4f30-ab52-f97a8cadb165}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseGame\BaseGame.cpp">
@@ -35,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="src\Shape\Shape.cpp">
       <Filter>src\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\Animation.cpp">
+      <Filter>src\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="src\Shape\Shape.h">
       <Filter>src\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\Animation.h">
+      <Filter>src\Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
