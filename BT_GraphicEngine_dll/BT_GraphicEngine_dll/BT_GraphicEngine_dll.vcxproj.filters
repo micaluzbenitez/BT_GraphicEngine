@@ -69,6 +69,9 @@
     <ClCompile Include="src\Entity\Entity.cpp">
       <Filter>src\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity2D\Entity2D.cpp">
+      <Filter>src\Entity2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity2D\Entity2D.h">
+      <Filter>src\Entity2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
