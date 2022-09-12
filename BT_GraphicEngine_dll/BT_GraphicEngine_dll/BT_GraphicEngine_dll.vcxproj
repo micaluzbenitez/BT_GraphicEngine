@@ -53,6 +53,9 @@
     <ClInclude Include="src\Triangle\Triangle.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic.shader" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

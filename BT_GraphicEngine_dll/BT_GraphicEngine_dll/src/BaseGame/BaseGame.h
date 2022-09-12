@@ -14,6 +14,7 @@ class DllImport BaseGame
 private:
 	Window* _window;
 	Renderer* _renderer;
+	Material* _material;
 
 public:
 	BaseGame();
