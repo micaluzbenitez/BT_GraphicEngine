@@ -19,49 +19,6 @@ BaseGame::~BaseGame()
     }
 }
 
-/* Create shader */
-static unsigned int CompilerShader(unsigned int type, const string& source)
-{
-    unsigned int id = glCreateShader(type);
-    const char* src = source.c_str();
-    glShaderSource(id, 1, &src, nullptr);
-    glCompileShader(id);
-
-    int result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    if (result == GL_FALSE)
-    {
-        int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message = (char*)alloca(length * sizeof(char));
-        glGetShaderInfoLog(id, length, &length, message);
-        cout << "Failed to compile shader " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << endl;
-        cout << message << endl;
-        glDeleteShader(id);
-        return 0;
-    }
-
-    return id;
-}
-
-static unsigned int CreateShader(const string& vertexShader, const string& fragmentShader)
-{
-    unsigned int program = glCreateProgram();
-    unsigned int vs = CompilerShader(GL_VERTEX_SHADER, vertexShader);
-    unsigned int fs = CompilerShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(program, vs); // Atachea los dos shaders al programa
-    glAttachShader(program, fs);
-    glLinkProgram(program); // Lo linkea
-    glValidateProgram(program); // Valida que este todo bien
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return program;
-}
-/* ------------- */
-
 void BaseGame::RunBaseGame()
 {    
     if (Init())
@@ -131,9 +88,9 @@ bool BaseGame::Init()
         "{\n"
         "   color = vec4(1.0, 0.0, 0.0, 1.0);\n"
         "}\n";
+    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    glUseProgram(shader);
     */
-    //unsigned int shader = CreateShader(vertexShader, fragmentShader);
-    
     /* ------------- */
 
     return _window != nullptr;
