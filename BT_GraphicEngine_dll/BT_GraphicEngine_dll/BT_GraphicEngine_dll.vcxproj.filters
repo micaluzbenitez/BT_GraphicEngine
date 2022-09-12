@@ -66,14 +66,20 @@
     <ClCompile Include="src\Material\Material.cpp">
       <Filter>src\Material</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shape\Shape.cpp">
-      <Filter>src\Shape</Filter>
+    <ClCompile Include="src\CollisionManager\CollisionManager.cpp">
+      <Filter>src\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="src\Animation\Animation.cpp">
       <Filter>src\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="src\CollisionManager\CollisionManager.cpp">
-      <Filter>src\CollisionManager</Filter>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextureImporter\TextureImporter.cpp">
+      <Filter>src\TextureImporter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileMap\TileMap.cpp">
+      <Filter>src\TileMap</Filter>
     </ClCompile>
     <ClCompile Include="src\Entity\Entity.cpp">
       <Filter>src\Entity</Filter>
@@ -81,17 +87,11 @@
     <ClCompile Include="src\Entity2D\Entity2D.cpp">
       <Filter>src\Entity2D</Filter>
     </ClCompile>
-    <ClCompile Include="src\Input\Input.cpp">
-      <Filter>src\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TileMap\TileMap.cpp">
-      <Filter>src\TileMap</Filter>
-    </ClCompile>
-    <ClCompile Include="src\TextureImporter\TextureImporter.cpp">
-      <Filter>src\TextureImporter</Filter>
-    </ClCompile>
     <ClCompile Include="src\Sprite\Sprite.cpp">
       <Filter>src\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shape\Shape.cpp">
+      <Filter>src\Shape</Filter>
     </ClCompile>
     <ClCompile Include="src\Square\Square.cpp">
       <Filter>src\Square</Filter>
@@ -116,14 +116,20 @@
     <ClInclude Include="src\Material\Material.h">
       <Filter>src\Material</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shape\Shape.h">
-      <Filter>src\Shape</Filter>
+    <ClInclude Include="src\CollisionManager\CollisionManager.h">
+      <Filter>src\CollisionManager</Filter>
     </ClInclude>
     <ClInclude Include="src\Animation\Animation.h">
       <Filter>src\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="src\CollisionManager\CollisionManager.h">
-      <Filter>src\CollisionManager</Filter>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextureImporter\TextureImporter.h">
+      <Filter>src\TextureImporter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileMap\TileMap.h">
+      <Filter>src\TileMap</Filter>
     </ClInclude>
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>src\Entity</Filter>
@@ -131,17 +137,11 @@
     <ClInclude Include="src\Entity2D\Entity2D.h">
       <Filter>src\Entity2D</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input\Input.h">
-      <Filter>src\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TileMap\TileMap.h">
-      <Filter>src\TileMap</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TextureImporter\TextureImporter.h">
-      <Filter>src\TextureImporter</Filter>
-    </ClInclude>
     <ClInclude Include="src\Sprite\Sprite.h">
       <Filter>src\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shape\Shape.h">
+      <Filter>src\Shape</Filter>
     </ClInclude>
     <ClInclude Include="src\Square\Square.h">
       <Filter>src\Square</Filter>
@@ -151,7 +151,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Basic.shader">
+    <None Include="res\shaders\Basic.shader">
       <Filter>res</Filter>
     </None>
   </ItemGroup>

@@ -109,9 +109,13 @@ bool BaseGame::Init()
     _renderer->DefineVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
     
     /* Create shader */
-    //ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-    //unsigned int shader = _material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    //glUseProgram(shader);
+    ShaderProgramSource source = ParseShader("shaders/Basic.shader");
+    cout << "VERTEX" << endl;
+    cout << source.VertexSource << endl;
+    cout << "FRAGMENT" << endl;
+    cout << source.FragmentSource << endl;
+    unsigned int shader = _material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    glUseProgram(shader);
     /* ------------- */
 
     return _window != nullptr;

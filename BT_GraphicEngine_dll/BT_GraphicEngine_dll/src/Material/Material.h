@@ -10,14 +10,15 @@ using namespace std;
 class DllImport Material
 {
 private:
-	GLuint ID;
+
 public:
 	Material();
 	~Material();
     void LoadShaders(const char* vertexPath, const char* fragmentPath);
     static unsigned int CompilerShader(unsigned int type, const string& source);
-    void CreateMaterial(const string& vertexShader, const string& fragmentShader);
-    void UseMaterial();
+    static unsigned int CreateMaterial(const string& vertexShader, const string& fragmentShader);
+    void UseMaterial(GLuint program);
+    void DeleteMaterial(GLuint program);
 };
 
 #endif   

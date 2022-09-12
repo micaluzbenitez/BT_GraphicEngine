@@ -1,6 +1,7 @@
 #ifndef ENTITY2D_H
 #define ENTITY2D_H
 
+#include <glew.h>
 #include <glfw3.h>
 #include "Export.h"
 #include "Entity/Entity.h"
@@ -17,7 +18,7 @@ public:
 	~Entity2D();
 	void AttachMaterial(Material* newMaterial);
 	void DetachMaterial();
-	virtual void Draw() = 0;
+	//virtual void Draw() = 0;
 };
 
 #endif 

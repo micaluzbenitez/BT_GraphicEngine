@@ -1,6 +1,7 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
+#include <glew.h>
 #include <glfw3.h>
 #include "Export.h"
 #include "Shape/Shape.h"

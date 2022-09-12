@@ -6,3 +6,4 @@ Shape::Shape()
 
 Shape::~Shape()
 {
+}
