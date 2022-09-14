@@ -1,5 +1,6 @@
 #include "Material.h"
 #include <fstream>
+#include <string>
 #include <sstream>
 
 Material::Material()
@@ -12,40 +13,34 @@ Material::~Material()
     glDeleteProgram(ID);
 }
 
-void Material::LoadShaders(const char* vertexPath, const char* fragmentPath)
+ShaderProgramSource Material::ParseShader(const string& filepath)
 {
-    // 1. retrieve the vertex/fragment source code from filePath
-    std::string vertexCode;
-    std::string fragmentCode;
-    std::ifstream vShaderFile;
-    std::ifstream fShaderFile;
-    // ensure ifstream objects can throw exceptions:
-    vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-    try
-    {
-        // open files
-        vShaderFile.open(vertexPath);
-        fShaderFile.open(fragmentPath);
-        stringstream vShaderStream;
-        stringstream fShaderStream;
-        // read file's buffer contents into streams
-        vShaderStream << vShaderFile.rdbuf();
-        fShaderStream << fShaderFile.rdbuf();
-        // close file handlers
-        vShaderFile.close();
-        fShaderFile.close();
-        // convert stream into string
-        vertexCode = vShaderStream.str();
-        fragmentCode = fShaderStream.str();
-    }
-    catch (std::ifstream::failure e)
-    {
-        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-    }
-    const char* vShaderCode = vertexCode.c_str();
-    const char* fShaderCode = fragmentCode.c_str();
+    ifstream stream(filepath);
 
+    enum class ShaderType
+    {
+        NONE = -1, VERTEX = 0, FRAGMENT = 1
+    };
+
+    string line;
+    stringstream ss[2];
+    ShaderType type = ShaderType::NONE;
+    while (getline(stream, line))
+    {
+        if (line.find("#shader") != string::npos)
+        {
+            if (line.find("vertex") != string::npos)
+                type = ShaderType::VERTEX;
+            else if (line.find("fragment") != string::npos)
+                type = ShaderType::FRAGMENT;
+        }
+        else
+        {
+            ss[(int)type] << line << "\n";
+        }
+    }
+
+    return { ss[0].str(), ss[1].str() };
 }
 
 unsigned int Material::CompilerShader(unsigned int type, const string& source)
