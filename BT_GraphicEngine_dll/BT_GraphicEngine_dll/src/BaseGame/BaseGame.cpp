@@ -124,13 +124,13 @@ bool BaseGame::Init()
     _renderer->SetVertexBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
     
     /* Create shader */
-    //ShaderProgramSource source = ParseShader("shaders/Basic.shader");
-    //cout << "VERTEX" << endl;
-    //cout << source.VertexSource << endl;
-    //cout << "FRAGMENT" << endl;
-    //cout << source.FragmentSource << endl;
-    //_material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    //_material->UseMaterial();
+    ShaderProgramSource source = ParseShader("shaders/Basic.shader");
+    cout << "VERTEX" << endl;
+    cout << source.VertexSource << endl;
+    cout << "FRAGMENT" << endl;
+    cout << source.FragmentSource << endl;
+    _material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    _material->UseMaterial();
     /* ------------- */
 
     return _window != nullptr;

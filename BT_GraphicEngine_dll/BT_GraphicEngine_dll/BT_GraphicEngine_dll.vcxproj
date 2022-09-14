@@ -143,7 +143,9 @@
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>XCOPY "$(ProjectDir)bin\$(Configuration)\BT_GraphicEngine_dll.dll" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
-XCOPY "$(SolutionDir)lib\GLFW\lib\glfw3.lib" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s</Command>
+XCOPY "$(SolutionDir)lib\GLFW\lib\glfw3.lib" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
+MKDIR "$(SolutionDir)bin\$(Configuration)\shaders"
+XCOPY "$(ProjectDir)res\shaders" "$(SolutionDir)bin\$(Configuration)\shaders" /e /h /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -171,7 +173,9 @@ XCOPY "$(SolutionDir)lib\GLFW\lib\glfw3.lib" "$(SolutionDir)bin\$(Configuration)
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>XCOPY "$(ProjectDir)bin\$(Configuration)\BT_GraphicEngine_dll.dll" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
-XCOPY "$(SolutionDir)lib\GLFW\lib\glfw3.lib" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s</Command>
+XCOPY "$(SolutionDir)lib\GLFW\lib\glfw3.lib" "$(SolutionDir)bin\$(Configuration)" /e /h /y /s
+MKDIR "$(SolutionDir)bin\$(Configuration)\shaders"
+XCOPY "$(ProjectDir)res\shaders" "$(SolutionDir)bin\$(Configuration)\shaders" /e /h /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
