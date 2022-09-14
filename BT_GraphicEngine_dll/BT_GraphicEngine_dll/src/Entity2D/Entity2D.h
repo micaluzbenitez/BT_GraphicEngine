@@ -15,9 +15,8 @@ private:
 public:
 	Entity2D();
 	~Entity2D();
-	void AttachMaterial(Material* newMaterial);
+	void AttachMaterial();
 	void DetachMaterial();
-	void Draw();
 };
 
 #endif 

@@ -14,7 +14,6 @@ private:
 public:
 	Shape();
 	~Shape();
-	void Draw();
 };
 
 #endif   

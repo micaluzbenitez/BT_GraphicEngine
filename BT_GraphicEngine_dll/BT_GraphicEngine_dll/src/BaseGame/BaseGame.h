@@ -8,6 +8,7 @@
 #include "Renderer/Renderer.h"
 #include "Input/Input.h"
 #include "CollisionManager/CollisionManager.h"
+#include "Shape/Shape.h" // --> esto despues no iria, se llamaria desde el .exe
 #include "Export.h"
 using namespace std;
 
@@ -18,6 +19,7 @@ private:
 	Renderer* _renderer;
 	Input* _input;
 	CollisionManager* _collisionManager;
+	Shape* _shape;
 
 public:
 	BaseGame();

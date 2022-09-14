@@ -26,7 +26,8 @@ public:
 	setters de todo
 	getters de todo
 	*/
-	void Draw() {};
+	virtual void Draw(Renderer* renderer, GLsizei vertices) = 0;
+	virtual void DrawWithIndexBuffer(Renderer* renderer, GLsizei indices) = 0;
 };
 
 #endif

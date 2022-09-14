@@ -10,7 +10,6 @@ Material::Material()
 
 Material::~Material()
 {
-    glDeleteProgram(ID);
 }
 
 ShaderProgramSource Material::ParseShader(const string& filepath)
@@ -87,4 +86,9 @@ void Material::CreateMaterial(const string& vertexShader, const string& fragment
  void Material::UseMaterial()
  {
      glUseProgram(ID);
+ }
+
+ void Material::DeleteMaterial()
+ {
+     glDeleteProgram(ID);
  }

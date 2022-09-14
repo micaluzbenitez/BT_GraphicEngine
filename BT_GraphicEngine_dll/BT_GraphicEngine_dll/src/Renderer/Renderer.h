@@ -3,13 +3,14 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Material/Material.h"
+#include "Window/Window.h"
 #include "Export.h"
 using namespace std;
 
 class DllImport Renderer
 {
 private:
+	Window* window;
 
 public:
 	Renderer();
@@ -24,9 +25,6 @@ public:
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
 	void EnableVertexAttribArray(GLuint index);
-	void DisableVertexAttribArray(GLuint index);
-	void EnableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index);
-	void DisableVertexArrayAttrib(GLuint vertexArrayObject, GLuint index);
 	void DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer);
 };
 

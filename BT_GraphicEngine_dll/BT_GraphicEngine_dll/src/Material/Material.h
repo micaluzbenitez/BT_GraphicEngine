@@ -25,6 +25,7 @@ public:
     static unsigned int CompilerShader(unsigned int type, const string& source);
     void CreateMaterial(const string& vertexShader, const string& fragmentShader);
     void UseMaterial();
+    void DeleteMaterial();
 };
 
 #endif   

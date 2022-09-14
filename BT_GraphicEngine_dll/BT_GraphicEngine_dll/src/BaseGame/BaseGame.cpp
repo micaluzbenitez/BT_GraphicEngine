@@ -51,6 +51,7 @@ bool BaseGame::Init()
     _renderer = new Renderer();
     _input = new Input();
     _collisionManager = new CollisionManager();
+    _shape = new Shape();
 
     /* Initialize the library */
     _window->InitLibrary();                              
@@ -97,6 +98,7 @@ bool BaseGame::Init()
     _renderer->SetVertexBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
     
     /* Create shader */
+    _shape->
     ShaderProgramSource source = _material->ParseShader("shaders/Basic.shader");
     _material->CreateMaterial(source.VertexSource, source.FragmentSource);
     _material->UseMaterial();
