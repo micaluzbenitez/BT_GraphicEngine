@@ -3,8 +3,8 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Export.h"
 #include "Material/Material.h"
+#include "Export.h"
 using namespace std;
 
 class DllImport Renderer

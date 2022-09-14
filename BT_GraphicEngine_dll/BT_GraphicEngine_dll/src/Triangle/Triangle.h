@@ -3,14 +3,14 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Export.h"
 #include "Shape/Shape.h"
-
+#include "Export.h"
 using namespace std;
 
 class DllImport Triangle : Shape
 {
 private:
+
 
 public:
 	Triangle();

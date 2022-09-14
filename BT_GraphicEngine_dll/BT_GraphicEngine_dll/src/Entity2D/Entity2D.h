@@ -3,10 +3,9 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Export.h"
 #include "Entity/Entity.h"
 #include "Material/Material.h"
-
+#include "Export.h"
 using namespace std;
 
 class DllImport Entity2D : Entity

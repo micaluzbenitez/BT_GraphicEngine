@@ -2,8 +2,17 @@
 
 Sprite::Sprite()
 {
+    animation = nullptr;
 }
 
 Sprite::~Sprite()
+{
+    if (animation != nullptr) {
+        animation = nullptr;
+        delete animation;
+    }
+}
+
+void Sprite::Draw()
 {
 }

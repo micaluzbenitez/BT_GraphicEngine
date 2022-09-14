@@ -4,7 +4,8 @@ BaseGame::BaseGame()
 {
     _renderer = nullptr;
     _window = nullptr;
-    _material = nullptr;
+    _input = nullptr;
+    _collisionManager = nullptr;
 }
 
 BaseGame::~BaseGame()
@@ -19,9 +20,14 @@ BaseGame::~BaseGame()
         delete _renderer;
     }
 
-    if (_material != nullptr) {
-        _material = nullptr;
-        delete _material;
+    if (_input != nullptr) {
+        _input = nullptr;
+        delete _input;
+    }
+
+    if (_collisionManager != nullptr) {
+        _collisionManager = nullptr;
+        delete _collisionManager;
     }
 }
 
@@ -43,7 +49,8 @@ bool BaseGame::Init()
 {
     _window = new Window();
     _renderer = new Renderer();
-    _material = new Material();
+    _input = new Input();
+    _collisionManager = new CollisionManager();
 
     /* Initialize the library */
     _window->InitLibrary();                              
@@ -91,13 +98,8 @@ bool BaseGame::Init()
     
     /* Create shader */
     ShaderProgramSource source = _material->ParseShader("shaders/Basic.shader");
-    cout << "VERTEX" << endl;
-    cout << source.VertexSource << endl;
-    cout << "FRAGMENT" << endl;
-    cout << source.FragmentSource << endl;
     _material->CreateMaterial(source.VertexSource, source.FragmentSource);
     _material->UseMaterial();
-    /* ------------- */
 
     return _window != nullptr;
 }
@@ -123,7 +125,6 @@ void BaseGame::Draw()
 
 void BaseGame::Deinit()
 {
-    //glDeleteProgram(shader);
     _window->TerminateLibrary();
 }
  

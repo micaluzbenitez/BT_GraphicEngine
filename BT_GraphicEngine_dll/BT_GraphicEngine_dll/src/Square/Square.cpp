@@ -7,3 +7,7 @@ Square::Square()
 Square::~Square()
 {
 }
+
+void Square::Draw()
+{
+}

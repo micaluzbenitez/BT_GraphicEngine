@@ -3,9 +3,8 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Export.h"
 #include "Entity2D/Entity2D.h"
-
+#include "Export.h"
 using namespace std;
 
 class DllImport Shape : Entity2D

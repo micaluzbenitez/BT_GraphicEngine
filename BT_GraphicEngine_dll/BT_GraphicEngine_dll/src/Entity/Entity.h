@@ -3,9 +3,8 @@
 
 #include <glew.h>
 #include <glfw3.h>
-#include "Export.h"
 #include "Renderer/Renderer.h"
-
+#include "Export.h"
 using namespace std;
 
 class DllImport Entity //Quizas sea abstracta
