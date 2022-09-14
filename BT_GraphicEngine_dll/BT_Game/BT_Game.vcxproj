@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\GLEW\include;$(SolutionDir)lib\GLFW\include;$(SolutionDir)BT_GraphicEngine_dll\src;$(SolutionDir)BT_GraphicEngine_dll\res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\GLEW\include;$(SolutionDir)lib\GLFW\include;$(SolutionDir)BT_GraphicEngine_dll\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\GLEW\include;$(SolutionDir)lib\GLFW\include;$(SolutionDir)BT_GraphicEngine_dll\src;$(SolutionDir)BT_GraphicEngine_dll\res;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\GLEW\include;$(SolutionDir)lib\GLFW\include;$(SolutionDir)BT_GraphicEngine_dll\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
