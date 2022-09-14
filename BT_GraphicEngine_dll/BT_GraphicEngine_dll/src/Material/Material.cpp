@@ -4,10 +4,12 @@
 
 Material::Material()
 {
+    ID = NULL;
 }
 
 Material::~Material()
 {
+    glDeleteProgram(ID);
 }
 
 void Material::LoadShaders(const char* vertexPath, const char* fragmentPath)
@@ -70,7 +72,7 @@ unsigned int Material::CompilerShader(unsigned int type, const string& source)
     return id;
 }
 
-unsigned int Material::CreateMaterial(const string& vertexShader, const string& fragmentShader)
+void Material::CreateMaterial(const string& vertexShader, const string& fragmentShader)
 {
     unsigned int program = glCreateProgram();
     unsigned int vs = CompilerShader(GL_VERTEX_SHADER, vertexShader);
@@ -84,15 +86,10 @@ unsigned int Material::CreateMaterial(const string& vertexShader, const string& 
     glDeleteShader(vs);
     glDeleteShader(fs);
 
-    return program;
+    ID = program;
 }
 
- void Material::UseMaterial(GLuint program)
+ void Material::UseMaterial()
  {
-     glUseProgram(program);
- }
-
- void Material::DeleteMaterial(GLuint program)
- {
-     glDeleteProgram(program);
+     glUseProgram(ID);
  }

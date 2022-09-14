@@ -114,8 +114,8 @@ bool BaseGame::Init()
     cout << source.VertexSource << endl;
     cout << "FRAGMENT" << endl;
     cout << source.FragmentSource << endl;
-    unsigned int shader = _material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    glUseProgram(shader);
+    _material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    _material->UseMaterial();
     /* ------------- */
 
     return _window != nullptr;
