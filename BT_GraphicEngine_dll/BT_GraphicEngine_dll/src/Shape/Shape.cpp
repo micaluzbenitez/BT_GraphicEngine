@@ -2,30 +2,33 @@
 
 Shape::Shape()
 {
+    shader = NULL;
 }
 
 Shape::~Shape()
 {
 }
 
-void Entity2D::AttachMaterial()
+void Shape::AttachMaterial()
 {
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
-    material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    material->UseMaterial();
+    shader = material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    material->UseMaterial(shader);
 }
 
-void Entity2D::DetachMaterial()
+void Shape::DetachMaterial()
 {
-    material->DeleteMaterial();
+    material->DeleteMaterial(shader);
 }
 
-void Entity::Draw(GLsizei vertices)
+void Shape::Draw(GLsizei vertices)
 {
+    // Vertices que dibujamos
     renderer->DrawWithoutIndexBuffer(GL_TRIANGLES, 0, vertices);
 }
 
-void Entity::DrawWithIndexBuffer(GLsizei indices)
+void Shape::DrawWithIndexBuffer(GLsizei indices)
 {
+    // Indices que dibujamos
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, indices, GL_UNSIGNED_INT, nullptr);
 }

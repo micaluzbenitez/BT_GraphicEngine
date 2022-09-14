@@ -12,7 +12,3 @@ Sprite::~Sprite()
         delete animation;
     }
 }
-
-void Sprite::Draw()
-{
-}

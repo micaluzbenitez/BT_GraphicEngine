@@ -7,13 +7,18 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Shape : Entity2D
+class DllImport Shape : public Entity2D
 {
 private:
+	unsigned int shader;
 
 public:
 	Shape();
 	~Shape();
+	void AttachMaterial();
+	void DetachMaterial();
+	void Draw(GLsizei vertices);
+	void DrawWithIndexBuffer(GLsizei indices);
 };
 
 #endif   

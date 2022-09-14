@@ -12,15 +12,3 @@ Entity2D::~Entity2D()
         delete material;
     }
 }
-
-void Entity2D::AttachMaterial()
-{
-    ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
-    material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    material->UseMaterial();
-}
-
-void Entity2D::DetachMaterial()
-{
-    material->DeleteMaterial();
-}

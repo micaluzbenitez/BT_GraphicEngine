@@ -98,10 +98,7 @@ bool BaseGame::Init()
     _renderer->SetVertexBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
     
     /* Create shader */
-    _shape->
-    ShaderProgramSource source = _material->ParseShader("shaders/Basic.shader");
-    _material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    _material->UseMaterial();
+    _shape->AttachMaterial();
 
     return _window != nullptr;
 }
@@ -118,8 +115,7 @@ void BaseGame::Draw()
     //_renderer->ClearScreenWithColor(1, 0, 0, 1);
 
     /* GLEW draw mode */
-    //_renderer->DrawWithoutIndexBuffer(GL_TRIANGLES, 0, 6); // --> 6 son los vertices que dibujamos
-    _renderer->DrawWithIndexBuffer(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // --> 6 son los indices que dibujamos
+    _shape->DrawWithIndexBuffer(6);
 
     /* Swap front and back buffers */
     _renderer->SwapBuffers(_window->GetWindow());

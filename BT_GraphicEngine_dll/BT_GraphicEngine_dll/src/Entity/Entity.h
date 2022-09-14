@@ -9,7 +9,7 @@ using namespace std;
 
 class DllImport Entity //Quizas sea abstracta
 {
-private:
+protected:
 	Renderer* renderer;
 	/*
 	5 matrices
@@ -19,15 +19,15 @@ private:
 		posicion
 		escala
 	*/
-public:
+public: 
 	Entity();
 	~Entity();
 	/*
 	setters de todo
 	getters de todo
 	*/
-	virtual void Draw(Renderer* renderer, GLsizei vertices) = 0;
-	virtual void DrawWithIndexBuffer(Renderer* renderer, GLsizei indices) = 0;
+	//virtual void Draw(GLsizei vertices) = 0;
+	//virtual void DrawWithIndexBuffer(GLsizei indices) = 0;
 };
 
 #endif
