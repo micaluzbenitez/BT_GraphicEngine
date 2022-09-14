@@ -13,7 +13,7 @@ struct ShaderProgramSource
     string FragmentSource;
 };
 
-class DllImport Material
+class DllApi Material
 {
 private:
 

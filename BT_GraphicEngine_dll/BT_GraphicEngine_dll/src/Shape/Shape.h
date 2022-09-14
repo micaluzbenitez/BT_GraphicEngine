@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Shape : public Entity2D
+class DllApi Shape : public Entity2D
 {
 private:
 	unsigned int shader;

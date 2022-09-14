@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport TileMap : public Entity2D
+class DllApi TileMap : public Entity2D
 {
 private:
 

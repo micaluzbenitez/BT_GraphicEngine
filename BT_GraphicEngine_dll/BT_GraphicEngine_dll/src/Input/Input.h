@@ -6,7 +6,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Input
+class DllApi Input
 {
 private:
 

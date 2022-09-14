@@ -12,7 +12,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport BaseGame
+class DllApi BaseGame
 {
 private:
 	Window* _window;

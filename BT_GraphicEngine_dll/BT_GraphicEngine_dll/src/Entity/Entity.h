@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Entity //Quizas sea abstracta
+class DllApi Entity //Quizas sea abstracta
 {
 protected:
 	Renderer* renderer;

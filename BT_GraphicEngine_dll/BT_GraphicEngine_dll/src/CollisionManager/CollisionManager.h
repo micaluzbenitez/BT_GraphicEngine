@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport CollisionManager
+class DllApi CollisionManager
 {
 private:
 	Entity2D* entity2D;

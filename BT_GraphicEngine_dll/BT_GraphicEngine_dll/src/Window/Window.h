@@ -6,7 +6,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Window
+class DllApi Window
 {
 private:
 	GLFWwindow* window;

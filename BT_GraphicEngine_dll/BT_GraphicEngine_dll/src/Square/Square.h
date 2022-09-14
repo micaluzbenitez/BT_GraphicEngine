@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Square : Shape
+class DllApi Square : Shape
 {
 private:
 

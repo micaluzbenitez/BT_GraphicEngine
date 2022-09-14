@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Renderer
+class DllApi Renderer
 {
 private:
 	Window* window;

@@ -7,7 +7,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Triangle : Shape
+class DllApi Triangle : Shape
 {
 private:
 

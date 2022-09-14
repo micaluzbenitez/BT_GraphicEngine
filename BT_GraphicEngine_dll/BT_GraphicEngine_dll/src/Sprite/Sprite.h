@@ -8,7 +8,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Sprite : public Entity2D
+class DllApi Sprite : public Entity2D
 {
 private:
 	Animation* animation;

@@ -8,7 +8,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Entity2D : public Entity
+class DllApi Entity2D : public Entity
 {
 protected:
 	Material* material;

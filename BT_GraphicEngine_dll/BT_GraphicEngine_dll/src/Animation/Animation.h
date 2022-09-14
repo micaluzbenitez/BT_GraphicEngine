@@ -6,7 +6,7 @@
 #include "Export.h"
 using namespace std;
 
-class DllImport Animation
+class DllApi Animation
 {
 private:
 
