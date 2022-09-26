@@ -25,6 +25,11 @@ public:
 	BaseGame();
 	~BaseGame();
 	int Init();
+
+	// Virtual classes
+	virtual void Begin() = 0;
+	virtual void Update() = 0;
+	virtual void End() = 0;
 };
 
 #endif
