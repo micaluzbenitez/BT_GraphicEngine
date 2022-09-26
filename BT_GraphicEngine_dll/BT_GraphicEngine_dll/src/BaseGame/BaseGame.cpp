@@ -35,8 +35,6 @@ int BaseGame::Init()
 {
     _window = new Window();
     _renderer = new Renderer();
-    _input = new Input();
-    _collisionManager = new CollisionManager();
     _shape = new Shape();
 
     _window->InitLibrary();                              
@@ -49,11 +47,8 @@ int BaseGame::Init()
     //_shape->CreateSquare();    
     _shape->AttachMaterial(); // Shader
 
-    Begin();
     while (!_window->WindowShouldClose())
     {
-        Update();
-
         _renderer->ClearScreen();
         _shape->DrawTriangle();
         //_shape->DrawSquare();
@@ -61,7 +56,6 @@ int BaseGame::Init()
 
         _window->PollEvents();
     }
-    End();
 
     _window->TerminateLibrary();
     return 0;
