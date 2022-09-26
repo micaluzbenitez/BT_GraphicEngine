@@ -45,13 +45,15 @@ int BaseGame::Init()
 
     _renderer->InitGLEW();
 
-    _shape->CreateSquare();    
+    _shape->CreateTriangle();
+    //_shape->CreateSquare();    
     _shape->AttachMaterial(); // Shader
 
     while (!_window->WindowShouldClose())
     {
         _renderer->ClearScreen();
-        _shape->DrawSquare();
+        _shape->DrawTriangle();
+        //_shape->DrawSquare();
         _renderer->SwapBuffers(_window->GetWindow());
 
         _window->PollEvents();
