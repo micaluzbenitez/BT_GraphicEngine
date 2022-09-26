@@ -19,6 +19,12 @@ public:
 	void DetachMaterial();
 	void Draw(GLsizei vertices);
 	void DrawWithIndexBuffer(GLsizei indices);
+
+	void CreateTriangle();
+	void DrawTriangle();
+
+	void CreateSquare();
+	void DrawSquare();
 };
 
 #endif   

@@ -45,35 +45,13 @@ int BaseGame::Init()
 
     _renderer->InitGLEW();
 
-    /* GLEW buffer */
-    float positions[] =
-    {
-        -0.5f, -0.5f,  // 0
-         0.5f, -0.5f,  // 1
-         0.5f,  0.5f,  // 2
-        -0.5f,  0.5f   // 3
-    };
-
-    /* Index buffer */
-    unsigned int indices[] =
-    {
-        0, 1, 2,
-        2, 3, 0
-    };
-    
-    unsigned int buffer; // Vertex buffer
-    _renderer->BindBuffer(1, buffer, GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
-    _renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-    unsigned int ibo; // Index buffer
-    _renderer->BindBuffer(1, ibo, GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-    
+    _shape->CreateSquare();    
     _shape->AttachMaterial(); // Shader
 
     while (!_window->WindowShouldClose())
     {
         _renderer->ClearScreen();
-        _shape->DrawWithIndexBuffer(6);
+        _shape->DrawSquare();
         _renderer->SwapBuffers(_window->GetWindow());
 
         _window->PollEvents();
