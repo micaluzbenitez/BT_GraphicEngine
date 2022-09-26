@@ -34,40 +34,33 @@ void Renderer::SwapBuffers(GLFWwindow* window)
 
 int Renderer::InitGLEW()
 {
+	// Init GLEW
 	if (glewInit() != GLEW_OK) return -1;
 }
 
-void Renderer::AssignVertexBuffer(GLsizei buffersQuantity, GLuint& buffer)
+void Renderer::BindBuffer(GLsizei buffersQuantity, GLuint& buffer, GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage)
 {
-	glGenBuffers(1, &buffer);
+	// Assing out GLEW buffer
+	glGenBuffers(buffersQuantity, &buffer); // Assign vertex buffer
+	glBindBuffer(target, buffer); // Set vertex buffer target
+	glBufferData(target, size, data, usage); // Set vertex buffer data
 }
 
-void Renderer::SetVertexBufferTarget(GLenum target, GLuint buffer)
+void Renderer::EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset)
 {
-	glBindBuffer(target, buffer);
-}
-
-void Renderer::SetVertexBufferData(GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage)
-{
-	glBufferData(target, size, data, usage);
+	// GLEW enabled vertex attrib
+	glEnableVertexAttribArray(index); // Enable vertex attrib array
+	glVertexAttribPointer(index, size, type, normalized, stride, offset); // Define vertex attrib pointer
 }
 
 void Renderer::DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count)
 {
+	// Draw vertices
 	glDrawArrays(primitive, offset, count);
 }
 
 void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices)
 {
+	// Draw indices
 	glDrawElements(primitive, count, type, indices);
-}
-
-void Renderer::EnableVertexAttribArray(GLuint index)
-{
-	glEnableVertexAttribArray(index);
-}
-
-void Renderer::DefineVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset)
-{
-	glVertexAttribPointer(index, size, type, normalized, stride, offset);
 }

@@ -31,21 +31,7 @@ BaseGame::~BaseGame()
     }
 }
 
-void BaseGame::RunBaseGame()
-{    
-    if (Init())
-    {
-        while (!_window->WindowShouldClose())
-        {
-            Update();
-            Draw();
-        }
-        Deinit();
-    }
-    else cout << "Error creating the window";
-}
-
-bool BaseGame::Init()
+int BaseGame::Init()
 {
     _window = new Window();
     _renderer = new Renderer();
@@ -53,16 +39,10 @@ bool BaseGame::Init()
     _collisionManager = new CollisionManager();
     _shape = new Shape();
 
-    /* Initialize the library */
     _window->InitLibrary();                              
-
-    /* Create a windowed mode window and its OpenGL context */
     _window->CreateWindow();
-
-    /* Make the window's context current */
     _window->MakeWindowContextCurrent();
 
-    /* GLEW init */
     _renderer->InitGLEW();
 
     /* GLEW buffer */
@@ -81,48 +61,24 @@ bool BaseGame::Init()
         2, 3, 0
     };
     
-    /* Assign out GLEW buffer */
-    unsigned int buffer;
-    _renderer->AssignVertexBuffer(1, buffer);
-    _renderer->SetVertexBufferTarget(GL_ARRAY_BUFFER, buffer);
-    _renderer->SetVertexBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
+    unsigned int buffer; // Vertex buffer
+    _renderer->BindBuffer(1, buffer, GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
+    _renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
-    /* GLEW enabled vertex attrib */
-    _renderer->EnableVertexAttribArray(0);
-    _renderer->DefineVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-    /* Create out index buffer object */
-    unsigned int ibo;
-    _renderer->AssignVertexBuffer(1, ibo);
-    _renderer->SetVertexBufferTarget(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    _renderer->SetVertexBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+    unsigned int ibo; // Index buffer
+    _renderer->BindBuffer(1, ibo, GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
     
-    /* Create shader */
-    _shape->AttachMaterial();
+    _shape->AttachMaterial(); // Shader
 
-    return _window != nullptr;
-}
+    while (!_window->WindowShouldClose())
+    {
+        _renderer->ClearScreen();
+        _shape->DrawWithIndexBuffer(6);
+        _renderer->SwapBuffers(_window->GetWindow());
 
-void BaseGame::Update()
-{
-    /* Poll for and process events */
-    _window->PollEvents();
-}
+        _window->PollEvents();
+    }
 
-void BaseGame::Draw()
-{
-    _renderer->ClearScreen();
-    //_renderer->ClearScreenWithColor(1, 0, 0, 1);
-
-    /* GLEW draw mode */
-    _shape->DrawWithIndexBuffer(6);
-
-    /* Swap front and back buffers */
-    _renderer->SwapBuffers(_window->GetWindow());
-}
-
-void BaseGame::Deinit()
-{
     _window->TerminateLibrary();
+    return 0;
 }
- 

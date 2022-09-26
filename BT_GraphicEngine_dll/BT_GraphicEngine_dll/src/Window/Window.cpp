@@ -51,6 +51,7 @@ void Window::PollEvents()
 
 void Window::TerminateLibrary()
 {
+	// Finish the process of running the library
 	glfwTerminate();
 }
 
