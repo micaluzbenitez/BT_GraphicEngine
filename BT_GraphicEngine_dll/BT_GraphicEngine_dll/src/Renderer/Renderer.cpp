@@ -41,12 +41,27 @@ int Renderer::InitGLEW()
 	if (glewInit() != GLEW_OK) return -1;
 }
 
-void Renderer::BindBuffer(GLsizei buffersQuantity, GLuint& buffer, GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage)
+void Renderer::BindBuffer(GLsizeiptr sizeVertices, GLsizeiptr sizeIndices, const GLvoid* vertices, const GLvoid* indices, unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
 {
-	// Assing out GLEW buffer
-	glGenBuffers(buffersQuantity, &buffer); // Assign vertex buffer
-	glBindBuffer(target, buffer); // Set vertex buffer target
-	glBufferData(target, size, data, usage); // Set vertex buffer data
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
+	glBindVertexArray(VAO);
+
+	// Vertex buffer
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * sizeVertices, vertices, GL_STATIC_DRAW);
+
+	// Index buffer
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * sizeIndices, indices, GL_STATIC_DRAW);
+}
+
+void Renderer::UnBindVertex(unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
+{
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 }
 
 void Renderer::EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset)

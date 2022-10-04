@@ -6,6 +6,7 @@ Shape::Shape()
 
 Shape::~Shape()
 {
+    renderer->UnBindVertex(VAO, VBO, EBO);
 }
 
 void Shape::AttachMaterial()
@@ -48,13 +49,8 @@ void Shape::CreateTriangle()
         0, 1, 2
     };
 
-    
-    // Vertex buffer
-    renderer->BindBuffer(1, VBO, GL_ARRAY_BUFFER, TRIANGLE_POSITIONS_ARRAY_COUNT * sizeof(float), positions, GL_STATIC_DRAW);
+    renderer->BindBuffer(TRIANGLE_POSITIONS_ARRAY_COUNT * sizeof(float), TRIANGLE_INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
     renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-    // Index buffer
-    renderer->BindBuffer(1, EBO, GL_ELEMENT_ARRAY_BUFFER, TRIANGLE_INDEX_ARRAY_COUNT * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 }
 
 void Shape::DrawTriangle()
@@ -81,14 +77,8 @@ void Shape::CreateSquare()
         2, 3, 0
     };
 
-    // Vertex buffer
-    renderer->BindBuffer(1, VBO, GL_ARRAY_BUFFER, SQUARE_POSITIONS_ARRAY_COUNT * sizeof(float), positions, GL_STATIC_DRAW);
+    renderer->BindBuffer(SQUARE_POSITIONS_ARRAY_COUNT * sizeof(float), SQUARE_INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
     renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-    // Index buffer
-    renderer->BindBuffer(1, EBO, GL_ELEMENT_ARRAY_BUFFER, SQUARE_INDEX_ARRAY_COUNT * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-    AttachMaterial();
 }
 
 void Shape::DrawSquare()

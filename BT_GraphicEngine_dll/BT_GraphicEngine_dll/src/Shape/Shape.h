@@ -10,8 +10,6 @@ using namespace std;
 class DllApi Shape : public Entity2D
 {
 private:
-	//unsigned int shader;
-
 	const int TRIANGLE_POSITIONS_ARRAY_COUNT = 6;
 	const int TRIANGLE_INDEX_ARRAY_COUNT = 3;
 	const int SQUARE_POSITIONS_ARRAY_COUNT = 8;

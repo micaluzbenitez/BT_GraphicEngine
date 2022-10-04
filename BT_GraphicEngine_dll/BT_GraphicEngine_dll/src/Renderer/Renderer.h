@@ -25,7 +25,8 @@ public:
 	void ClearScreenWithColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
 	void SwapBuffers(GLFWwindow* window);
 	int InitGLEW();
-	void BindBuffer(GLsizei buffersQuantity, GLuint& buffer, GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage);
+	void BindBuffer(GLsizeiptr sizeVertices, GLsizeiptr sizeIndices, const GLvoid* vertices, const GLvoid* indices, unsigned int& VAO, unsigned int& VBO, unsigned int& EBO);
+	void UnBindVertex(unsigned int& VAO, unsigned int& VBO, unsigned int& EBO);
 	void EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset);
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
