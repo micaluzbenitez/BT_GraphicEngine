@@ -87,12 +87,12 @@ unsigned int Material::CreateMaterial(const string& vertexShader, const string& 
      glUseProgram(program);
  }
 
- void Material::ModifyMaterial(GLuint program, glm::mat4 modelMatrix)
+ void Material::ModifyMaterial(GLuint program, glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::mat4 modelMatrix)
  {
      unsigned int projectionUbication = glGetUniformLocation(ID, "projection");
-     glUniformMatrix4fv(projectionUbication, 1, GL_FALSE, glm::value_ptr(projection));
+     glUniformMatrix4fv(projectionUbication, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
      unsigned int viewUbication = glGetUniformLocation(ID, "view");
-     glUniformMatrix4fv(viewUbication, 1, GL_FALSE, glm::value_ptr(view));
+     glUniformMatrix4fv(viewUbication, 1, GL_FALSE, glm::value_ptr(viewMatrix));
      unsigned int modelUbication = glGetUniformLocation(ID, "model");
      glUniformMatrix4fv(modelUbication, 1, GL_FALSE, glm::value_ptr(modelMatrix));
  }

@@ -21,9 +21,6 @@ class DllApi Material
 private:
     unsigned int ID;
 
-    glm::mat4 view;
-    glm::mat4 projection;
-
 public:
 	Material();
 	~Material();
@@ -31,7 +28,7 @@ public:
     unsigned int CompilerShader(unsigned int type, const string& source);
     unsigned int CreateMaterial(const string& vertexShader, const string& fragmentShader);
     void UseMaterial(GLuint program);
-    void ModifyMaterial(GLuint program, glm::mat4 modelMatrix);
+    void ModifyMaterial(GLuint program, glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::mat4 modelMatrix);
     void DeleteMaterial(GLuint program);
 };
 

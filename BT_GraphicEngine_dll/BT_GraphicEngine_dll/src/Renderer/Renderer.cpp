@@ -3,6 +3,8 @@
 Renderer::Renderer()
 {
 	window = nullptr;
+	view = glm::mat4(1.0f);
+	projection = glm::mat4(1.0f);
 }
 
 Renderer::~Renderer()
@@ -63,4 +65,14 @@ void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type,
 {
 	// Draw indices
 	glDrawElements(primitive, count, type, indices);
+}
+
+glm::mat4 Renderer::GetViewMatrix()
+{
+	return view;
+}
+
+glm::mat4 Renderer::GetProjectionMatrix()
+{
+	return projection;
 }

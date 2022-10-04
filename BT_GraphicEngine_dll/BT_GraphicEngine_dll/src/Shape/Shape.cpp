@@ -15,7 +15,7 @@ void Shape::AttachMaterial()
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
     shader = material->CreateMaterial(source.VertexSource, source.FragmentSource);
     material->UseMaterial(shader);
-    material->ModifyMaterial(shader, GetModelMatrix());
+    material->ModifyMaterial(shader, renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix());
 }
 
 void Shape::DetachMaterial()

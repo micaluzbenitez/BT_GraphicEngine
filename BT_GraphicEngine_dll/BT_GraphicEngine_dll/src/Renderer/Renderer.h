@@ -15,6 +15,9 @@ class DllApi Renderer
 private:
 	Window* window;
 
+	glm::mat4 view;
+	glm::mat4 projection;
+
 public:
 	Renderer();
 	~Renderer();
@@ -26,6 +29,9 @@ public:
 	void EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset);
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
+
+	glm::mat4 GetViewMatrix();
+	glm::mat4 GetProjectionMatrix();
 };
 
 #endif
