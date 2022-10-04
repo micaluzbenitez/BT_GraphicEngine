@@ -6,12 +6,11 @@ Entity::Entity()
 {
     model = glm::mat4(1.0f);
 
-    translateMatrix = glm::mat4(0.0f);
-    rotationMatrix = glm::mat4(0.0f);
+    translateMatrix = glm::mat4(1.0f);
+    rotationMatrix = glm::mat4(1.0f);
     scaleMatrix = glm::mat4(1.0f);
     
     translateVector = glm::vec3(0.0f);
-    //rotationQuaternion = glm::quat(0.0f, 0.0f, 0.0f, 1.0f);
     rotationVector = glm::vec3(0.0f);
     scaleVector = glm::vec3(1.0f);
 
@@ -30,6 +29,13 @@ Entity::~Entity()
     }
 }
 
+glm::mat4 Entity::GetModelMatrix()
+{
+    model = glm::mat4(1.0f);
+    model *= scaleMatrix * rotationMatrix * translateMatrix;
+    return model;
+}
+
 void Entity::SetPosition(float x, float y, float z)
 {
     translateVector = glm::vec3(x, y, z); //Va a modificar la mat
@@ -37,8 +43,7 @@ void Entity::SetPosition(float x, float y, float z)
 
 void Entity::SetRotation(float x, float y, float z)
 {
-    //rotationQuaternion = EulerToQuat(glm::vec3(x,y,z)); //Va a modificar la mat
-    rotationVector = glm::vec3(x, y, z);
+    rotationVector = glm::vec3(x, y, z); //Va a modificar la mat
 }
 
 void Entity::SetScale(float x, float y, float z)
@@ -61,29 +66,28 @@ glm::vec3 Entity::GetScale()
     return scaleVector;
 }
 
-/*
+
 void Entity::Translate(float x, float y, float z)
 {
+    translateMatrix = glm::mat4(1.0f);
     translateMatrix = glm::translate(translateMatrix, glm::vec3(x, y, z));
-    translateVector = glm::vec3(x, y, z) + translateVector;
 }
 
 void Entity::Rotate(float x, float y, float z)
 {
+    rotationMatrix = glm::mat4(1.0f);
     rotationMatrix = glm::rotate(rotationMatrix, x, glm::vec3(1, 0, 0));
     rotationMatrix = glm::rotate(rotationMatrix, y, glm::vec3(0, 1, 0));
-    rotationMatrix = glm::rotate(rotationMatrix, z, glm::vec3(0, 0, 1));
-
-    rotationQuaternion = QuaternionLookRotation(glm::vec3(rotationMatrix[2], rotationMatrix[6], rotationMatrix[10]), glm::vec3(rotationMatrix[1], rotationMatrix[5], rotationMatrix[9]));
-    
+    rotationMatrix = glm::rotate(rotationMatrix, z, glm::vec3(0, 0, 1));    
 }
 
 void Entity::Scale(float x, float y, float z)
 {
+    scaleMatrix = glm::mat4(1.0f);
     scaleMatrix = glm::scale(scaleMatrix, glm::vec3(x, y, z));
-    scaleVector = glm::vec3(x, y, z) * scaleVector;
 }
 
+/*
 glm::quat Entity::EulerToQuat(glm::vec3 euler)
 {
     euler *= deg2rad;

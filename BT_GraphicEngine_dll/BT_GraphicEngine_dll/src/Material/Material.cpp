@@ -43,26 +43,26 @@ ShaderProgramSource Material::ParseShader(const string& filepath)
 
 unsigned int Material::CompilerShader(unsigned int type, const string& source)
 {
-    unsigned int id = glCreateShader(type);
+    ID = glCreateShader(type);
     const char* src = source.c_str();
-    glShaderSource(id, 1, &src, nullptr);
-    glCompileShader(id);
+    glShaderSource(ID, 1, &src, nullptr);
+    glCompileShader(ID);
 
     int result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+    glGetShaderiv(ID, GL_COMPILE_STATUS, &result);
     if (result == GL_FALSE)
     {
         int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+        glGetShaderiv(ID, GL_INFO_LOG_LENGTH, &length);
         char* message = (char*)alloca(length * sizeof(char));
-        glGetShaderInfoLog(id, length, &length, message);
+        glGetShaderInfoLog(ID, length, &length, message);
         cout << "Failed to compile shader " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << endl;
         cout << message << endl;
-        glDeleteShader(id);
+        glDeleteShader(ID);
         return 0;
     }
 
-    return id;
+    return ID;
 }
 
 unsigned int Material::CreateMaterial(const string& vertexShader, const string& fragmentShader)
@@ -85,6 +85,16 @@ unsigned int Material::CreateMaterial(const string& vertexShader, const string& 
  void Material::UseMaterial(GLuint program)
  {
      glUseProgram(program);
+ }
+
+ void Material::ModifyMaterial(GLuint program, glm::mat4 modelMatrix)
+ {
+     unsigned int projectionUbication = glGetUniformLocation(ID, "projection");
+     glUniformMatrix4fv(projectionUbication, 1, GL_FALSE, glm::value_ptr(projection));
+     unsigned int viewUbication = glGetUniformLocation(ID, "view");
+     glUniformMatrix4fv(viewUbication, 1, GL_FALSE, glm::value_ptr(view));
+     unsigned int modelUbication = glGetUniformLocation(ID, "model");
+     glUniformMatrix4fv(modelUbication, 1, GL_FALSE, glm::value_ptr(modelMatrix));
  }
 
  void Material::DeleteMaterial(GLuint program)

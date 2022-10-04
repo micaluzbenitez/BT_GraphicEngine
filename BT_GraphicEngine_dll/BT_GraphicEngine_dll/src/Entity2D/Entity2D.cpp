@@ -2,7 +2,7 @@
 
 Entity2D::Entity2D()
 {
-    material = nullptr;
+    material = new Material();
 }
 
 Entity2D::~Entity2D()
