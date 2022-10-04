@@ -2,7 +2,6 @@
 
 Shape::Shape()
 {
-    shader = NULL;
 }
 
 Shape::~Shape()
@@ -13,14 +12,14 @@ void Shape::AttachMaterial()
 {
     // Create shader
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
-    shader = material->CreateMaterial(source.VertexSource, source.FragmentSource);
-    material->UseMaterial(shader);
-    material->ModifyMaterial(shader, renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix());
+    material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    material->UseMaterial();
+    material->ModifyMaterial(Renderer::GetProjectionMatrix(), Renderer::GetViewMatrix(), GetModelMatrix());
 }
 
 void Shape::DetachMaterial()
 {
-    material->DeleteMaterial(shader);
+    material->DeleteMaterial();
 }
 
 void Shape::Draw(GLsizei vertices)
@@ -88,6 +87,8 @@ void Shape::CreateSquare()
 
     // Index buffer
     renderer->BindBuffer(1, EBO, GL_ELEMENT_ARRAY_BUFFER, SQUARE_INDEX_ARRAY_COUNT * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+    AttachMaterial();
 }
 
 void Shape::DrawSquare()

@@ -45,7 +45,7 @@ int BaseGame::Init()
 
     //_shape->CreateTriangle();
     _shape->CreateSquare();    
-    _shape->AttachMaterial(); // Shader
+    //_shape->AttachMaterial(); // Shader
 
     while (!_window->WindowShouldClose())
     {

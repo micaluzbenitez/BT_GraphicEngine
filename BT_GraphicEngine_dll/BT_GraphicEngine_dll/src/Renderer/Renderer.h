@@ -15,8 +15,8 @@ class DllApi Renderer
 private:
 	Window* window;
 
-	glm::mat4 view;
-	glm::mat4 projection;
+	static glm::mat4 view;
+	static glm::mat4 projection;
 
 public:
 	Renderer();
@@ -30,8 +30,8 @@ public:
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
 
-	glm::mat4 GetViewMatrix();
-	glm::mat4 GetProjectionMatrix();
+	static glm::mat4 GetViewMatrix();
+	static glm::mat4 GetProjectionMatrix();
 };
 
 #endif

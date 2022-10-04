@@ -3,9 +3,10 @@
 Renderer::Renderer()
 {
 	window = nullptr;
-	view = glm::mat4(1.0f);
-	projection = glm::mat4(1.0f);
 }
+
+glm::mat4 Renderer::view = glm::mat4(1.0f);
+glm::mat4 Renderer::projection = glm::mat4(1.0f);
 
 Renderer::~Renderer()
 {
