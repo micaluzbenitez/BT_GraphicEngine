@@ -1,8 +1,10 @@
 #include "Window.h"
 
-Window::Window()
+Window::Window(int newWidth, int newHeight)
 {
 	window = nullptr;
+	width = newWidth;
+	height = newHeight;
 }
 
 Window::~Window()
@@ -23,7 +25,7 @@ int Window::InitLibrary()
 int Window::CreateWindow()
 {
 	// Create a windowed mode window and its OpenGL context
-	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(width, height, "Hello World", NULL, NULL);
 	if (!window)
 	{
 		TerminateLibrary();
@@ -58,4 +60,14 @@ void Window::TerminateLibrary()
 GLFWwindow* Window::GetWindow()
 {
 	return window;
+}
+
+int Window::GetWidth()
+{
+	return width;
+}
+
+int Window::GetHeight()
+{
+	return height;
 }

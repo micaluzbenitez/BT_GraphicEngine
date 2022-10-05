@@ -1,7 +1,8 @@
 #include "Shape.h"
 
-Shape::Shape()
+Shape::Shape(Renderer* newRenderer)
 {
+    renderer = newRenderer;
 }
 
 Shape::~Shape()
@@ -9,13 +10,27 @@ Shape::~Shape()
     renderer->UnBindVertex(VAO, VBO, EBO);
 }
 
+void Shape::SetColor(glm::vec3 newColor)
+{
+    colorVector = newColor;
+}
+
+glm::vec3 Shape::GetColor()
+{
+    return colorVector;
+}
+
 void Shape::AttachMaterial()
 {
     // Create shader
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    cout << "VERTEX:" << endl;
+    cout << source.VertexSource << endl;
+    cout << "FRAGMENT:" << endl;
+    cout << source.FragmentSource << endl;
     material->UseMaterial();
-    //material->ModifyMaterial(Renderer::GetProjectionMatrix(), Renderer::GetViewMatrix(), GetModelMatrix());
+    material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
 }
 
 void Shape::DetachMaterial()
@@ -30,6 +45,7 @@ void Shape::Draw(GLsizei vertices)
 
 void Shape::DrawWithIndexBuffer(GLsizei indices)
 {
+    material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
     material->UseMaterial();
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr, VAO);
 }

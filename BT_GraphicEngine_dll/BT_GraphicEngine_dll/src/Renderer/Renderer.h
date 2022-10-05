@@ -15,11 +15,11 @@ class DllApi Renderer
 private:
 	Window* window;
 
-	static glm::mat4 view;
-	static glm::mat4 projection;
+	glm::mat4 view;
+	glm::mat4 projection;
 
 public:
-	Renderer();
+	Renderer(Window* newWindow);
 	~Renderer();
 	void ClearScreen();
 	void ClearScreenWithColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
@@ -31,8 +31,8 @@ public:
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
 	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices, unsigned int VAO);
 
-	static glm::mat4 GetViewMatrix();
-	static glm::mat4 GetProjectionMatrix();
+	glm::mat4 GetViewMatrix();
+	glm::mat4 GetProjectionMatrix();
 };
 
 #endif

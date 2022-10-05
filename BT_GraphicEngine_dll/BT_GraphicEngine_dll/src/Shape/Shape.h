@@ -17,9 +17,15 @@ private:
 
 	const int VERTEX_SIZE = 6;
 
+	glm::vec3 colorVector;
+
 public:
-	Shape();
+	Shape(Renderer* newRenderer);
 	~Shape();
+	
+	void SetColor(glm::vec3);
+	glm::vec3 GetColor();
+	
 	void AttachMaterial();
 	void DetachMaterial();
 	void Draw(GLsizei vertices);
@@ -30,6 +36,7 @@ public:
 
 	void CreateSquare();
 	void DrawSquare();
+
 };
 
 #endif   
