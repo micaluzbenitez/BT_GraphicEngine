@@ -67,8 +67,8 @@ void Renderer::UnBindVertex(unsigned int& VAO, unsigned int& VBO, unsigned int& 
 void Renderer::EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset)
 {
 	// GLEW enabled vertex attrib
-	glEnableVertexAttribArray(index); // Enable vertex attrib array
 	glVertexAttribPointer(index, size, type, normalized, stride, offset); // Define vertex attrib pointer
+	glEnableVertexAttribArray(index); // Enable vertex attrib array
 }
 
 void Renderer::DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count)
@@ -77,8 +77,9 @@ void Renderer::DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei co
 	glDrawArrays(primitive, offset, count);
 }
 
-void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices)
+void Renderer::DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices, unsigned int VAO)
 {
+	glBindVertexArray(VAO);
 	// Draw indices
 	glDrawElements(primitive, count, type, indices);
 }

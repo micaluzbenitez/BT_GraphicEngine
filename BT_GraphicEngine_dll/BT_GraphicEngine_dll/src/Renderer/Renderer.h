@@ -29,7 +29,7 @@ public:
 	void UnBindVertex(unsigned int& VAO, unsigned int& VBO, unsigned int& EBO);
 	void EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* offset);
 	void DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count);
-	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices);
+	void DrawWithIndexBuffer(GLenum primitive, GLsizei count, GLenum type, const GLvoid* indices, unsigned int VAO);
 
 	static glm::mat4 GetViewMatrix();
 	static glm::mat4 GetProjectionMatrix();

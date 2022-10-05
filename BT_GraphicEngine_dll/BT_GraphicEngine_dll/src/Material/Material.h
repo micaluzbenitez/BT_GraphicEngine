@@ -19,14 +19,14 @@ struct ShaderProgramSource
 class DllApi Material
 {
 private:
-    unsigned int ID;
+    unsigned int ID = -1;
 
 public:
 	Material();
 	~Material();
     ShaderProgramSource ParseShader(const string& filepath);
     unsigned int CompilerShader(unsigned int type, const string& source);
-    unsigned int CreateMaterial(const string& vertexShader, const string& fragmentShader);
+    void CreateMaterial(const string& vertexShader, const string& fragmentShader);
     void UseMaterial();
     void ModifyMaterial(glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::mat4 modelMatrix);
     void DeleteMaterial();

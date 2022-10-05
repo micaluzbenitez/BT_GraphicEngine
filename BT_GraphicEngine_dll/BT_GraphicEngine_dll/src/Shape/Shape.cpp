@@ -15,7 +15,7 @@ void Shape::AttachMaterial()
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
     material->UseMaterial();
-    material->ModifyMaterial(Renderer::GetProjectionMatrix(), Renderer::GetViewMatrix(), GetModelMatrix());
+    //material->ModifyMaterial(Renderer::GetProjectionMatrix(), Renderer::GetViewMatrix(), GetModelMatrix());
 }
 
 void Shape::DetachMaterial()
@@ -30,7 +30,8 @@ void Shape::Draw(GLsizei vertices)
 
 void Shape::DrawWithIndexBuffer(GLsizei indices)
 {
-    renderer->DrawWithIndexBuffer(GL_TRIANGLES, indices, GL_UNSIGNED_INT, nullptr);
+    material->UseMaterial();
+    renderer->DrawWithIndexBuffer(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr, VAO);
 }
 
 // ----------------------------------------- TRIANGLE -----------------------------------------
@@ -39,9 +40,9 @@ void Shape::CreateTriangle()
     /* GLEW buffer */
     float positions[] =
     {
-        -0.5f, -0.5f,  // 0
-         0.0f,  0.5f,  // 1
-         0.5f, -0.5f,  // 2
+        -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 0
+         0.0f,  0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 1
+         0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f  // 2
     }; 
 
     unsigned int indices[] =
@@ -50,7 +51,8 @@ void Shape::CreateTriangle()
     };
 
     renderer->BindBuffer(TRIANGLE_POSITIONS_ARRAY_COUNT * sizeof(float), TRIANGLE_INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
-    renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+    renderer->EnableVertexAttributes(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, 0); //pos
+    renderer->EnableVertexAttributes(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float)*3)); //color
 }
 
 void Shape::DrawTriangle()

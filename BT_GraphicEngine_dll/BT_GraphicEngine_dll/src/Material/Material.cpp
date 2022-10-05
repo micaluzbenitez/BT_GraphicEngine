@@ -65,7 +65,7 @@ unsigned int Material::CompilerShader(unsigned int type, const string& source)
     return ID;
 }
 
-unsigned int Material::CreateMaterial(const string& vertexShader, const string& fragmentShader)
+void Material::CreateMaterial(const string& vertexShader, const string& fragmentShader)
 {
     unsigned int program = glCreateProgram();
     unsigned int vs = CompilerShader(GL_VERTEX_SHADER, vertexShader);
@@ -79,7 +79,7 @@ unsigned int Material::CreateMaterial(const string& vertexShader, const string& 
     glDeleteShader(vs);
     glDeleteShader(fs);
 
-    return program;
+    ID = program;
 }
 
  void Material::UseMaterial()
