@@ -59,6 +59,11 @@ void Shape::CreateTriangle()
         -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 0
          0.0f,  0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 1
          0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f  // 2
+         /*
+         -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // 0 Si quisiera todos los bordes de diferente color
+         0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f, // 1
+         0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f  // 2
+         */
     }; 
 
     unsigned int indices[] =

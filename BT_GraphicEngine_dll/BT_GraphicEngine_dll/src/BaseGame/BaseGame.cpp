@@ -44,25 +44,44 @@ int BaseGame::Init()
     _renderer->InitGLEW();
 
     _shape->CreateTriangle();
-    //_shape->CreateSquare();    
-    _shape->SetColor(glm::vec3(0.1f, 0.8f, 1.0f));
+    //_shape->CreateSquare();   
+    _shape->SetColor(glm::vec3(1,1,0)); //Amarillo listo
+    _shape->SetPosition(-1, 1, 0);
     _shape->AttachMaterial(); // Shader
 
-    float time = 0;
+    float deltaTime = glfwGetTime();
+    float speed = 0.1f;
+    float speedScale = 0.005f;
+    float scale = _shape->GetScale().x;
 
     while (!_window->WindowShouldClose())
     {
         _renderer->ClearScreen();
-        if (time > 1) time = 0;
-        time += glfwGetTime();
-
+        
+        
         //_shape->Scale(2 * time, 2 * time, 2 * time);
-        _shape->Rotate(time, time, 0);
-        //_shape->Translate(0.5, 0.5f, 0.5f);
+        //_shape->Rotate(time, time, time);
+        //cout << _shape->GetPosition().x << endl;
+        
+        if (_shape->GetPosition().x < 4)
+        {
+            _shape->Translate(deltaTime * speed, 0, 0);
+            
+            _shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
+            
+            //cout << _shape->GetScale().x << endl;
+        }
+        else
+        {
+            _shape->SetPosition(-1,1,0);
+            _shape->SetScale(1, 1, 1);
+            scale = 1;
+        }
 
 
+        //triangulo amarillo arriba izquierda a arriba a la derecha achicandose
 
-        _shape->SetColor(glm::vec3(time, 0, 0));
+        //_shape->SetColor(glm::vec3(time, 0, 0));
 
         _shape->DrawTriangle();
 

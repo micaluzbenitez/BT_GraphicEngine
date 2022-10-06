@@ -1,5 +1,5 @@
 #include "Entity.h"
-
+//http://www.c-jump.com/bcc/common/Talk3/Math/GLM/GLM.html#W01_0030_matrix_transformation
 const float deg2rad = (glm::pi<float>() * 2.0f) / 360.0f;
 
 Entity::Entity()
@@ -10,8 +10,8 @@ Entity::Entity()
     rotationMatrix = glm::mat4(1.0f);
     scaleMatrix = glm::mat4(1.0f);
     
-    translateVector = glm::vec3(0.0f);
-    rotationVector = glm::vec3(0.0f);
+    translateVector = glm::vec3(1.0f);
+    rotationVector = glm::vec3(1.0f);
     scaleVector = glm::vec3(1.0f);
 
     VBO = 0;
@@ -39,6 +39,9 @@ glm::mat4 Entity::GetModelMatrix()
 void Entity::SetPosition(float x, float y, float z)
 {
     translateVector = glm::vec3(x, y, z); //Va a modificar la mat
+    translateMatrix[3].x = x;
+    translateMatrix[3].y = y;
+    translateMatrix[3].z = z;
 }
 
 void Entity::SetRotation(float x, float y, float z)
@@ -49,6 +52,9 @@ void Entity::SetRotation(float x, float y, float z)
 void Entity::SetScale(float x, float y, float z)
 {
     scaleVector = glm::vec3(x, y, z); //Va a modificar la mat
+    scaleMatrix[0].x = x;
+    scaleMatrix[1].y = y;
+    scaleMatrix[2].z = z;
 }
 
 glm::vec3 Entity::GetPosition()
@@ -69,22 +75,23 @@ glm::vec3 Entity::GetScale()
 
 void Entity::Translate(float x, float y, float z)
 {
-    translateMatrix = glm::mat4(1.0f);
     translateMatrix = glm::translate(translateMatrix, glm::vec3(x, y, z));
+    translateVector = glm::vec3(translateMatrix[3].x, translateMatrix[3].y, translateMatrix[3].z);
 }
 
 void Entity::Rotate(float x, float y, float z)
 {
-    rotationMatrix = glm::mat4(1.0f);
     rotationMatrix = glm::rotate(rotationMatrix, x, glm::vec3(1, 0, 0));
     rotationMatrix = glm::rotate(rotationMatrix, y, glm::vec3(0, 1, 0));
-    rotationMatrix = glm::rotate(rotationMatrix, z, glm::vec3(0, 0, 1));    
+    rotationMatrix = glm::rotate(rotationMatrix, z, glm::vec3(0, 0, 1));
+    //rotationVector
+
 }
 
 void Entity::Scale(float x, float y, float z)
 {
-    scaleMatrix = glm::mat4(1.0f);
     scaleMatrix = glm::scale(scaleMatrix, glm::vec3(x, y, z));
+    scaleVector = glm::vec3(scaleMatrix[0].x, scaleMatrix[1].y, scaleMatrix[2].z);
 }
 
 /*
