@@ -43,9 +43,9 @@ int BaseGame::Init()
 
     _renderer->InitGLEW();
 
-    //_shape->CreateTriangle();
-    _shape->CreateSquare();    
-    _shape->SetColor(glm::vec3(1.0f, 0.0f, 1.0f));
+    _shape->CreateTriangle();
+    //_shape->CreateSquare();    
+    _shape->SetColor(glm::vec3(0.1f, 0.8f, 1.0f));
     _shape->AttachMaterial(); // Shader
 
     float time = 0;
@@ -56,13 +56,17 @@ int BaseGame::Init()
         if (time > 1) time = 0;
         time += glfwGetTime();
 
-        //_shape->Scale(2, 2, 2);
-        _shape->Rotate(0, 0, time);
-        _shape->Translate(-0.1f * time, 0, -1.0);
+        //_shape->Scale(2 * time, 2 * time, 2 * time);
+        _shape->Rotate(time, time, 0);
+        //_shape->Translate(0.5, 0.5f, 0.5f);
 
-        //_shape->SetColor(glm::vec3(time, 0, 0));
-        //_shape->DrawTriangle();
-        _shape->DrawSquare();
+
+
+        _shape->SetColor(glm::vec3(time, 0, 0));
+
+        _shape->DrawTriangle();
+
+        //_shape->DrawSquare();
         _renderer->SwapBuffers(_window->GetWindow());
 
         _window->PollEvents();
