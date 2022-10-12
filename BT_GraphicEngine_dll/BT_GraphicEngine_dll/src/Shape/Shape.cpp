@@ -87,10 +87,10 @@ void Shape::CreateSquare()
     /* GLEW buffer */
     float positions[] =
     {
-        -0.5f, -0.5f,  // 0
-         0.5f, -0.5f,  // 1
-         0.5f,  0.5f,  // 2
-        -0.5f,  0.5f   // 3
+        1.5f,  -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 0
+        2.5f,  -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 1
+        2.5f,   0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
+        1.5f,   0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
     };
 
     /* Index buffer */
@@ -101,7 +101,8 @@ void Shape::CreateSquare()
     };
 
     renderer->BindBuffer(SQUARE_POSITIONS_ARRAY_COUNT * sizeof(float), SQUARE_INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
-    renderer->EnableVertexAttributes(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+    renderer->EnableVertexAttributes(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, 0); //pos
+    renderer->EnableVertexAttributes(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float) * 3)); //color
 }
 
 void Shape::DrawSquare()
