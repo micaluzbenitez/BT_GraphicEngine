@@ -31,7 +31,7 @@ BaseGame::~BaseGame()
     }
 }
 
-int BaseGame::Init()
+int BaseGame::Run()
 {
     _window = new Window(640,480);
     _renderer = new Renderer(_window);
@@ -53,6 +53,8 @@ int BaseGame::Init()
     float speed = 0.1f;
     float speedScale = 0.005f;
     float scale = _shape->GetScale().x;
+
+    Begin();
 
     while (!_window->WindowShouldClose())
     {
@@ -89,7 +91,11 @@ int BaseGame::Init()
         _renderer->SwapBuffers(_window->GetWindow());
 
         _window->PollEvents();
+
+        Update();
     }
+
+    End();
 
     _window->TerminateLibrary();
     return 0;

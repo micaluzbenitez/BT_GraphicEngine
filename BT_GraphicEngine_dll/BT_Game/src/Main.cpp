@@ -1,8 +1,8 @@
-#include "BaseGame/BaseGame.h"
+#include "Game/Game.h"
 
 void main()
 {
-	BaseGame* baseGame = new BaseGame();
-	baseGame->Init();
-	delete baseGame;
+	Game* game = new Game();
+	game->Run();
+	delete game;
 }

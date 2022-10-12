@@ -24,12 +24,11 @@ private:
 public:
 	BaseGame();
 	~BaseGame();
-	int Init();
+	int Run();
 
-	// Virtual classes
-	//virtual void Begin() = 0;
-	//virtual void Update() = 0;
-	//virtual void End() = 0;
+	virtual void Begin() = 0;
+	virtual void Update() = 0;
+	virtual void End() = 0;
 };
 
 #endif
