@@ -1,6 +1,7 @@
 #include "Entity.h"
 //http://www.c-jump.com/bcc/common/Talk3/Math/GLM/GLM.html#W01_0030_matrix_transformation
 const float deg2rad = (glm::pi<float>() * 2.0f) / 360.0f;
+const float pi = 3.14159265359f;
 
 Entity::Entity()
 {
@@ -47,6 +48,9 @@ void Entity::SetPosition(float x, float y, float z)
 void Entity::SetRotation(float x, float y, float z)
 {
     rotationVector = glm::vec3(x, y, z); //Va a modificar la mat
+    rotationQuaternion = EulerToQuat(rotationVector);
+    rotationMatrix = EulerToMat4(rotationVector);
+
 }
 
 void Entity::SetScale(float x, float y, float z)
@@ -84,7 +88,13 @@ void Entity::Rotate(float x, float y, float z)
     rotationMatrix = glm::rotate(rotationMatrix, x, glm::vec3(1, 0, 0));
     rotationMatrix = glm::rotate(rotationMatrix, y, glm::vec3(0, 1, 0));
     rotationMatrix = glm::rotate(rotationMatrix, z, glm::vec3(0, 0, 1));
-    //rotationVector
+
+    glm::vec3 col2 = glm::vec3(rotationMatrix[2].x, rotationMatrix[2].y, rotationMatrix[2].z);
+    glm::vec3 col1 = glm::vec3(rotationMatrix[1].x, rotationMatrix[1].y, rotationMatrix[1].z);
+
+    rotationQuaternion = QuaternionLookRotation(col2,col1);
+
+    rotationVector = QuaternionToEuler(rotationQuaternion);
 
 }
 
@@ -94,7 +104,6 @@ void Entity::Scale(float x, float y, float z)
     scaleVector = glm::vec3(scaleMatrix[0].x, scaleMatrix[1].y, scaleMatrix[2].z);
 }
 
-/*
 glm::quat Entity::EulerToQuat(glm::vec3 euler)
 {
     euler *= deg2rad;
@@ -112,6 +121,37 @@ glm::quat Entity::EulerToQuat(glm::vec3 euler)
     q.y = sr * cp * cy - cr * sp * sy;
     q.z = cr * cp * sy - sr * sp * cy;
     return q;
+}
+
+glm::mat4 Entity::EulerToMat4(glm::vec3 euler)
+{
+    // Calculate rotation about x axis
+    glm::mat4  R_x;
+    R_x[0] = { 1, 0, 0, 0};
+    R_x[1] = { 0, cos(euler.x), -sin(euler.x), 0};
+    R_x[2] = { 0, sin(euler.x), cos(euler.x), 0};
+    R_x[3] = { 0, 0, 0, 1};
+  
+
+    // Calculate rotation about y axis
+    glm::mat4  R_y;
+    R_y[0] = { cos(euler.y), 0, sin(euler.y), 0 };
+    R_y[1] = { 0, 1, 0, 0 };
+    R_y[2] = { -sin(euler.x), 0, cos(euler.x), 0 };
+    R_y[3] = { 0, 0, 0, 1 };
+
+    // Calculate rotation about z axis
+    glm::mat4  R_z;
+    R_z[0] = { cos(euler.y), -sin(euler.y), 0, 0 };
+    R_z[1] = { sin(euler.x), cos(euler.x), 0, 0 };
+    R_z[2] = { 0, 0, 1, 0 };
+    R_z[3] = { 0, 0, 0, 1 };
+
+    // Combined rotation matrix
+    glm::mat4  R = R_z * R_y * R_x;
+
+    return R;
+
 }
 
 glm::vec3 Entity::QuatToVec(glm::quat quat, glm::vec3 vec)
@@ -195,4 +235,29 @@ glm::quat Entity::QuaternionLookRotation(glm::vec3 forward, glm::vec3 upwards)
         return glm::quat(qx, qy, qz, qw);
     
 }
-*/
+glm::vec3 Entity::QuaternionToEuler(glm::quat quat)
+{
+    glm::vec3 angles;
+
+    float sinr_cosp = 2 * (quat.w * quat.x + quat.y * quat.z);
+    float cosr_cosp = 1 - 2 * (quat.x * quat.x + quat.y * quat.y);
+    angles.x = glm::pow(glm::atan(sinr_cosp, cosr_cosp),2.0f);
+
+    float sinp = 2 * (quat.w * quat.y - quat.z * quat.x);
+
+    if (glm::abs(sinp) >= 1)
+    {
+        angles.y = (pi / 2) * glm::sign(sinp);
+    }
+    else
+    {
+        angles.y = glm::asin(sinp);
+    }
+
+    float siny_cosp = 2 * (quat.w * quat.z + quat.x * quat.y);
+    float cosy_cosp = 1 - 2 * (quat.y * quat.y + quat.z * quat.z);
+    angles.z = glm::pow(glm::atan(siny_cosp, cosy_cosp), 2.0f);
+
+    return angles;
+
+} //Ok
