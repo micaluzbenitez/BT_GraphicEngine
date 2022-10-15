@@ -49,10 +49,10 @@ int BaseGame::Run()
     _shape->SetPosition(-1, 1, 0);
     _shape->AttachMaterial(); // Shader
 
-    float deltaTime = GetCurrentTime();
-    float speed = 0.1f;
-    float speedScale = 0.005f;
-    float scale = _shape->GetScale().x;
+    //float deltaTime = GetCurrentTime();
+    //float speed = 0.1f;
+    //float speedScale = 0.005f;
+    //float scale = _shape->GetScale().x;
 
     Begin();
 
@@ -65,20 +65,20 @@ int BaseGame::Run()
         //_shape->Rotate(time, time, time);
         //cout << _shape->GetPosition().x << endl;
         
-        if (_shape->GetPosition().x < 4)
-        {
-            _shape->Translate(deltaTime * speed, 0, 0);
-            
-            _shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
-            
-            //cout << _shape->GetScale().x << endl;
-        }
-        else
-        {
-            _shape->SetPosition(-1,1,0);
-            _shape->SetScale(1, 1, 1);
-            scale = 1;
-        }
+        //if (_shape->GetPosition().x < 4)
+        //{
+        //    _shape->Translate(deltaTime * speed, 0, 0);
+        //    
+        //    _shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
+        //    
+        //    //cout << _shape->GetScale().x << endl;
+        //}
+        //else
+        //{
+        //    _shape->SetPosition(-1,1,0);
+        //    _shape->SetScale(1, 1, 1);
+        //    scale = 1;
+        //}
 
 
         //triangulo amarillo arriba izquierda a arriba a la derecha achicandose
