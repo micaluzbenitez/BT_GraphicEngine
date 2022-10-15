@@ -26,19 +26,18 @@ protected:
 	glm::vec3 rotationVector;
 	glm::quat rotationQuaternion;
 	glm::vec3 scaleVector;
-
 	
 	glm::quat EulerToQuat(glm::vec3 euler);
 	glm::mat4 EulerToMat4(glm::vec3 euler);
 	glm::vec3 QuaternionToEuler(glm::quat quat);
 	glm::vec3 QuatToVec(glm::quat quat, glm::vec3 euler);
-	glm::quat QuaternionLookRotation(glm::vec3 forward, glm::vec3 upwards);
-	
+	glm::quat QuaternionLookRotation(glm::vec3 forward, glm::vec3 upwards);	
 	
 public: 
 	Entity();
 	~Entity();
 
+	void UpdateModelMatrix();
 	glm::mat4 GetModelMatrix();
 
 	void SetPosition(float x, float y, float z);

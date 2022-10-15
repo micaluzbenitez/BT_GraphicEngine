@@ -1,6 +1,7 @@
 #include "Input.h"
 #include "Window/Window.h"
 
+/*
 Input::Input(Window* window)
 {
 	glfwSetKeyCallback(window->GetWindow(), KeyCallback);
@@ -58,3 +59,4 @@ void Input::MouseCallback(GLFWwindow* window, double posX, double posY)
 	offsetPosX *= SENSITIVY;
 	offsetPosY *= SENSITIVY;
 }
+*/

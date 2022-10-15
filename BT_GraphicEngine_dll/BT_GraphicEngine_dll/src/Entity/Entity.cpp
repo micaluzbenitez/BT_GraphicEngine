@@ -30,10 +30,14 @@ Entity::~Entity()
     }
 }
 
-glm::mat4 Entity::GetModelMatrix()
+void Entity::UpdateModelMatrix()
 {
     model = glm::mat4(1.0f);
     model *= scaleMatrix * rotationMatrix * translateMatrix;
+}
+
+glm::mat4 Entity::GetModelMatrix()
+{
     return model;
 }
 
@@ -43,6 +47,7 @@ void Entity::SetPosition(float x, float y, float z)
     translateMatrix[3].x = x;
     translateMatrix[3].y = y;
     translateMatrix[3].z = z;
+    UpdateModelMatrix();
 }
 
 void Entity::SetRotation(float x, float y, float z)
@@ -50,6 +55,7 @@ void Entity::SetRotation(float x, float y, float z)
     rotationVector = glm::vec3(x, y, z); //Va a modificar la mat
     rotationQuaternion = EulerToQuat(rotationVector);
     rotationMatrix = EulerToMat4(rotationVector);
+    UpdateModelMatrix();
 
 }
 
@@ -59,6 +65,7 @@ void Entity::SetScale(float x, float y, float z)
     scaleMatrix[0].x = x;
     scaleMatrix[1].y = y;
     scaleMatrix[2].z = z;
+    UpdateModelMatrix();
 }
 
 glm::vec3 Entity::GetPosition()
@@ -81,6 +88,7 @@ void Entity::Translate(float x, float y, float z)
 {
     translateMatrix = glm::translate(translateMatrix, glm::vec3(x, y, z));
     translateVector = glm::vec3(translateMatrix[3].x, translateMatrix[3].y, translateMatrix[3].z);
+    UpdateModelMatrix();
 }
 
 void Entity::Rotate(float x, float y, float z)
@@ -96,12 +104,15 @@ void Entity::Rotate(float x, float y, float z)
 
     rotationVector = QuaternionToEuler(rotationQuaternion);
 
+    UpdateModelMatrix();
+
 }
 
 void Entity::Scale(float x, float y, float z)
 {
     scaleMatrix = glm::scale(scaleMatrix, glm::vec3(x, y, z));
     scaleVector = glm::vec3(scaleMatrix[0].x, scaleMatrix[1].y, scaleMatrix[2].z);
+    UpdateModelMatrix();
 }
 
 glm::quat Entity::EulerToQuat(glm::vec3 euler)
@@ -235,6 +246,7 @@ glm::quat Entity::QuaternionLookRotation(glm::vec3 forward, glm::vec3 upwards)
         return glm::quat(qx, qy, qz, qw);
     
 }
+
 glm::vec3 Entity::QuaternionToEuler(glm::quat quat)
 {
     glm::vec3 angles;

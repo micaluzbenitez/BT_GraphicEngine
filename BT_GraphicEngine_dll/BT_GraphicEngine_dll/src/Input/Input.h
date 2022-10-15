@@ -21,6 +21,7 @@ private:
 	const float SENSITIVY = 0.1f;
 
 public:
+	/*
 	Input(Window* window);
 	~Input();
 
@@ -31,6 +32,7 @@ public:
 
 	void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	void MouseCallback(GLFWwindow* window, double posX, double posY);
+	*/
 };
 
 #endif 
