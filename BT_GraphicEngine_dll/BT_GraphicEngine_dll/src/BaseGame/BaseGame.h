@@ -34,7 +34,6 @@ public:
 	bool IsKeyPressed(int keycode);
 	bool IsKeyDown(int keycode);
 	glm::vec2 GetMousePosition();
-	glm::vec2 GetDeltaMousePosition();
 	double GetCurrentTime();
 };
 

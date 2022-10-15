@@ -21,10 +21,14 @@ private:
 public:
 	Input(Window* window);
 	~Input();
-	bool IsKeyPressed(int keycode, Window* window);
-	bool IsKeyDown(int keycode, Window* window);
-	glm::vec2 GetMousePosition();
-	glm::vec2 GetDeltaMousePosition();
+
+	static bool IsKeyPressed(int keycode, Window* window);
+	static bool IsKeyDown(int keycode, Window* window);
+
+	static glm::vec2 GetMousePosition();
+
+	static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
 };
 
 #endif 

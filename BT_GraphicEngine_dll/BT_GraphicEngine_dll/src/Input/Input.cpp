@@ -1,8 +1,6 @@
 #include "Input.h"
 #include "Window/Window.h"
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
 std::list<int> currentKeysDown;
 glm::vec2 mousePosition;
@@ -13,15 +11,14 @@ const float sensitivity = 0.1f;
 
 Input::Input(Window* window)
 {
-	glfwSetKeyCallback(window->GetWindow(), keyCallback);
-	glfwSetCursorPosCallback(window->GetWindow(), mouse_callback);
+	glfwSetKeyCallback(window->GetWindow(), KeyCallback);
+	glfwSetCursorPosCallback(window->GetWindow(), MouseCallback);
 	mousePosition.x = window->GetWidth() / 2;
 	mousePosition.y = window->GetHeight() / 2;
 }
 
 Input::~Input()
 {
-
 }
 
 bool Input::IsKeyPressed(int keycode, Window* window)
@@ -40,17 +37,13 @@ bool Input::IsKeyDown(int keycode, Window* window)
 	}
 	return false;
 }
+
 glm::vec2 Input::GetMousePosition()
 {
 	return mousePosition;
 }
-glm::vec2 Input::GetDeltaMousePosition()
-{
-	glm::vec2 previousOffset = deltaMousePosition;
-	deltaMousePosition = glm::vec2(0, 0);
-	return previousOffset;
-}
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+
+void Input::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (action == GLFW_PRESS)
 	{
@@ -61,9 +54,9 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 		currentKeysDown.remove(key);
 	}
 }
-void mouse_callback(GLFWwindow* window, double posX, double posY)
-{
 
+void Input::MouseCallback(GLFWwindow* window, double posX, double posY)
+{
 	if (firstMouse)
 	{
 		mousePosition.x = posX;

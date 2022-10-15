@@ -71,11 +71,6 @@ glm::vec2 BaseGame::GetMousePosition()
     return input->GetMousePosition();
 }
 
-glm::vec2 BaseGame::GetDeltaMousePosition()
-{
-    return input->GetDeltaMousePosition();
-}
-
 double BaseGame::GetCurrentTime()
 {
     return glfwGetTime();
