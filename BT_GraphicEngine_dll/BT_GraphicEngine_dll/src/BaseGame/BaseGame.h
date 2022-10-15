@@ -31,6 +31,10 @@ public:
 	virtual void Update() = 0;
 	virtual void End() = 0;
 
+	bool IsKeyPressed(int keycode);
+	bool IsKeyDown(int keycode);
+	glm::vec2 GetMousePosition();
+	glm::vec2 GetDeltaMousePosition();
 	double GetCurrentTime();
 };
 

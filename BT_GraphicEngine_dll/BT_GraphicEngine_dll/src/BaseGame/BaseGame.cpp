@@ -56,6 +56,26 @@ int BaseGame::Run()
     return 0;
 }
 
+bool BaseGame::IsKeyPressed(int keycode)
+{
+    return input->IsKeyPressed(keycode, window);
+}
+
+bool BaseGame::IsKeyDown(int keycode)
+{
+    return input->IsKeyDown(keycode, window);
+}
+
+glm::vec2 BaseGame::GetMousePosition()
+{
+    return input->GetMousePosition();
+}
+
+glm::vec2 BaseGame::GetDeltaMousePosition()
+{
+    return input->GetDeltaMousePosition();
+}
+
 double BaseGame::GetCurrentTime()
 {
     return glfwGetTime();

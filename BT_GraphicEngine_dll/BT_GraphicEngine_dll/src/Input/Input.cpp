@@ -1,17 +1,27 @@
 #include "Input.h"
 #include "Window/Window.h"
 
-/*
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+
+std::list<int> currentKeysDown;
+glm::vec2 mousePosition;
+glm::vec2 deltaMousePosition;
+bool firstMouse = false;
+const float sensitivity = 0.1f;
+
+
 Input::Input(Window* window)
 {
-	glfwSetKeyCallback(window->GetWindow(), KeyCallback);
-	glfwSetCursorPosCallback(window->GetWindow(), MouseCallback);
+	glfwSetKeyCallback(window->GetWindow(), keyCallback);
+	glfwSetCursorPosCallback(window->GetWindow(), mouse_callback);
 	mousePosition.x = window->GetWidth() / 2;
 	mousePosition.y = window->GetHeight() / 2;
 }
 
 Input::~Input()
 {
+
 }
 
 bool Input::IsKeyPressed(int keycode, Window* window)
@@ -22,41 +32,52 @@ bool Input::IsKeyPressed(int keycode, Window* window)
 
 bool Input::IsKeyDown(int keycode, Window* window)
 {
-	list<int>::iterator it = find(keysDown.begin(), keysDown.end(), keycode);
-	if (it != keysDown.end())
+	std::list<int>::iterator it = find(currentKeysDown.begin(), currentKeysDown.end(), keycode);
+	if (it != currentKeysDown.end())
 	{
-		keysDown.remove(keycode);
+		currentKeysDown.remove(keycode);
 		return true;
 	}
 	return false;
 }
-
 glm::vec2 Input::GetMousePosition()
 {
 	return mousePosition;
 }
-
-void Input::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+glm::vec2 Input::GetDeltaMousePosition()
 {
-	if (action == GLFW_PRESS) keysDown.push_front(key);
-	else if(action == GLFW_RELEASE) keysDown.remove(key);
+	glm::vec2 previousOffset = deltaMousePosition;
+	deltaMousePosition = glm::vec2(0, 0);
+	return previousOffset;
 }
-
-void Input::MouseCallback(GLFWwindow* window, double posX, double posY)
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	if (action == GLFW_PRESS)
+	{
+		currentKeysDown.push_front(key);
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		currentKeysDown.remove(key);
+	}
+}
+void mouse_callback(GLFWwindow* window, double posX, double posY)
+{
+
 	if (firstMouse)
 	{
 		mousePosition.x = posX;
 		mousePosition.y = posY;
-		firstMouse = false; 
+		firstMouse = false;
 	}
 
 	float offsetPosX = posX - mousePosition.x;
-	float offsetPosY = mousePosition.y - posY;   // Coordenadas en Y estan invertidas
+	float offsetPosY = mousePosition.y - posY; //Coordenadas en Y estan invertidas
 	mousePosition.x = posX;
 	mousePosition.y = posY;
 
-	offsetPosX *= SENSITIVY;
-	offsetPosY *= SENSITIVY;
+	offsetPosX *= sensitivity;
+	offsetPosY *= sensitivity;
+	deltaMousePosition.x = offsetPosX;
+	deltaMousePosition.y = offsetPosY;
 }
-*/

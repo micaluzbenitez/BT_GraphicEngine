@@ -20,7 +20,7 @@ void Game::Begin()
     shape->CreateTriangle();
     //_shape->CreateSquare();   
     shape->SetColor(glm::vec3(1, 1, 0)); //Amarillo listo
-    shape->SetPosition(-1, 1, 0);
+    shape->SetPosition(0, 0, 0);
     shape->AttachMaterial(); // Shader
 
     deltaTime = GetCurrentTime();
@@ -35,20 +35,25 @@ void Game::Update()
     //_shape->Rotate(time, time, time);
     //cout << _shape->GetPosition().x << endl;
 
-    if (shape->GetPosition().x < 4)
-    {
-        shape->Translate(deltaTime * speed, 0, 0);
-        
-        shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
-        
-        //cout << _shape->GetScale().x << endl;
-    }
-    else
-    {
-        shape->SetPosition(-1,1,0);
-        shape->SetScale(1, 1, 1);
-        scale = 1;
-    }
+    //if (shape->GetPosition().x < 4)
+    //{
+    //    shape->Translate(deltaTime * speed, 0, 0);
+    //    
+    //    shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
+    //    
+    //    //cout << _shape->GetScale().x << endl;
+    //}
+    //else
+    //{
+    //    shape->SetPosition(-1,1,0);
+    //    shape->SetScale(1, 1, 1);
+    //    scale = 1;
+    //}
+
+    if (IsKeyPressed(KEY_W)) shape->Translate(0,  0.1f, 0);
+    if (IsKeyPressed(KEY_S)) shape->Translate(0, -0.1f, 0);
+    if (IsKeyPressed(KEY_A)) shape->Translate(-0.1f, 0, 0);
+    if (IsKeyPressed(KEY_D)) shape->Translate( 0.1f, 0, 0);
 
     //triangulo amarillo arriba izquierda a arriba a la derecha achicandose
 

@@ -131,6 +131,9 @@
     <ClInclude Include="src\Shape\Shape.h">
       <Filter>src\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="src\Keycodes.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\BT_Game\shaders\Basic.shader">
