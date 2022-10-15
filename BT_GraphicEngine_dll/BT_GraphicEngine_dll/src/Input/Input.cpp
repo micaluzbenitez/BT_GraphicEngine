@@ -2,19 +2,18 @@
 #include "Window/Window.h"
 
 
-std::list<int> currentKeysDown;
-glm::vec2 mousePosition;
-glm::vec2 deltaMousePosition;
-bool firstMouse = false;
-const float sensitivity = 0.1f;
-
+list<int> Input::currentKeysDown = list<int>();
+glm::vec2 Input::mousePosition = glm::vec2(0.f);
+bool Input::firstMouse = true;
 
 Input::Input(Window* window)
 {
-	glfwSetKeyCallback(window->GetWindow(), KeyCallback);
-	glfwSetCursorPosCallback(window->GetWindow(), MouseCallback);
 	mousePosition.x = window->GetWidth() / 2;
 	mousePosition.y = window->GetHeight() / 2;
+
+	glfwSetKeyCallback(window->GetWindow(), KeyCallback);
+	glfwSetCursorPosCallback(window->GetWindow(), MouseCallback);
+	glfwSetInputMode(window->GetWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 Input::~Input()
@@ -68,9 +67,4 @@ void Input::MouseCallback(GLFWwindow* window, double posX, double posY)
 	float offsetPosY = mousePosition.y - posY; //Coordenadas en Y estan invertidas
 	mousePosition.x = posX;
 	mousePosition.y = posY;
-
-	offsetPosX *= sensitivity;
-	offsetPosY *= sensitivity;
-	deltaMousePosition.x = offsetPosX;
-	deltaMousePosition.y = offsetPosY;
 }

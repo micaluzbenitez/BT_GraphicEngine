@@ -17,6 +17,9 @@ class Window;
 class DllApi Input
 {
 private:
+	static std::list<int> currentKeysDown;
+	static glm::vec2 mousePosition;
+	static bool firstMouse;
 
 public:
 	Input(Window* window);
@@ -28,7 +31,7 @@ public:
 	static glm::vec2 GetMousePosition();
 
 	static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-	static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+	static void MouseCallback(GLFWwindow* window, double posX, double posY);
 };
 
 #endif 
