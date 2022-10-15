@@ -18,7 +18,6 @@ private:
 	Window* window;
 	Input* input;
 	CollisionManager* collisionManager;
-	Shape* shape;
 
 protected:
 	Renderer* renderer;
