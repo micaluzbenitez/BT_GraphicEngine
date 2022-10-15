@@ -2,52 +2,52 @@
 
 BaseGame::BaseGame()
 {
-    _renderer = nullptr;
-    _window = nullptr;
-    _input = nullptr;
-    _collisionManager = nullptr;
+    renderer = nullptr;
+    window = nullptr;
+    input = nullptr;
+    collisionManager = nullptr;
 }
 
 BaseGame::~BaseGame()
 {
-    if (_window != nullptr) {
-        _window = nullptr;
-        delete _window;
+    if (window != nullptr) {
+        window = nullptr;
+        delete window;
     }
     
-    if (_renderer != nullptr) {
-        _renderer = nullptr;
-        delete _renderer;
+    if (renderer != nullptr) {
+        renderer = nullptr;
+        delete renderer;
     }
 
-    if (_input != nullptr) {
-        _input = nullptr;
-        delete _input;
+    if (input != nullptr) {
+        input = nullptr;
+        delete input;
     }
 
-    if (_collisionManager != nullptr) {
-        _collisionManager = nullptr;
-        delete _collisionManager;
+    if (collisionManager != nullptr) {
+        collisionManager = nullptr;
+        delete collisionManager;
     }
 }
 
 int BaseGame::Run()
 {
-    _window = new Window(640,480);
-    _renderer = new Renderer(_window);
-    _shape = new Shape(_renderer);
+    window = new Window(640,480);
+    renderer = new Renderer(window);
+    shape = new Shape(renderer);
 
-    _window->InitLibrary();                              
-    _window->CreateWindow();
-    _window->MakeWindowContextCurrent();
+    window->InitLibrary();                              
+    window->CreateWindow();
+    window->MakeWindowContextCurrent();
 
-    _renderer->InitGLEW();
+    renderer->InitGLEW();
 
-    _shape->CreateTriangle();
+    shape->CreateTriangle();
     //_shape->CreateSquare();   
-    _shape->SetColor(glm::vec3(1,1,0)); //Amarillo listo
-    _shape->SetPosition(-1, 1, 0);
-    _shape->AttachMaterial(); // Shader
+    shape->SetColor(glm::vec3(1,1,0)); //Amarillo listo
+    shape->SetPosition(-1, 1, 0);
+    shape->AttachMaterial(); // Shader
 
     //float deltaTime = GetCurrentTime();
     //float speed = 0.1f;
@@ -56,9 +56,9 @@ int BaseGame::Run()
 
     Begin();
 
-    while (!_window->WindowShouldClose())
+    while (!window->WindowShouldClose())
     {
-        _renderer->ClearScreen();
+        renderer->ClearScreen();
         
         
         //_shape->Scale(2 * time, 2 * time, 2 * time);
@@ -85,19 +85,19 @@ int BaseGame::Run()
 
         //_shape->SetColor(glm::vec3(time, 0, 0));
 
-        _shape->DrawTriangle();
+        shape->DrawTriangle();
 
         //_shape->DrawSquare();
-        _renderer->SwapBuffers(_window->GetWindow());
+        renderer->SwapBuffers(window->GetWindow());
 
-        _window->PollEvents();
+        window->PollEvents();
 
         Update();
     }
 
     End();
 
-    _window->TerminateLibrary();
+    window->TerminateLibrary();
     return 0;
 }
 

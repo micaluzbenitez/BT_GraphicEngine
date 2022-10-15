@@ -7,7 +7,7 @@ using namespace std;
 class Game : public BaseGame
 {
 private:
-	Shape* _shape;
+	Shape* shape;
 
 public:
 	void Begin()override;

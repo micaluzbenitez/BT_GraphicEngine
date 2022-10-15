@@ -15,13 +15,13 @@ using namespace std;
 class DllApi BaseGame
 {
 private:
-	Window* _window;
-	Input* _input;
-	CollisionManager* _collisionManager;
-	Shape* _shape;
+	Window* window;
+	Input* input;
+	CollisionManager* collisionManager;
+	Shape* shape;
 
 protected:
-	Renderer* _renderer;
+	Renderer* renderer;
 
 public:
 	BaseGame();
