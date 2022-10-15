@@ -49,7 +49,7 @@ int BaseGame::Run()
     _shape->SetPosition(-1, 1, 0);
     _shape->AttachMaterial(); // Shader
 
-    float deltaTime = glfwGetTime();
+    float deltaTime = GetCurrentTime();
     float speed = 0.1f;
     float speedScale = 0.005f;
     float scale = _shape->GetScale().x;
@@ -99,4 +99,9 @@ int BaseGame::Run()
 
     _window->TerminateLibrary();
     return 0;
+}
+
+double BaseGame::GetCurrentTime()
+{
+    return glfwGetTime();
 }

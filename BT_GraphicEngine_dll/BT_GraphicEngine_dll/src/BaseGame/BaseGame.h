@@ -16,10 +16,12 @@ class DllApi BaseGame
 {
 private:
 	Window* _window;
-	Renderer* _renderer;
 	Input* _input;
 	CollisionManager* _collisionManager;
 	Shape* _shape;
+
+protected:
+	Renderer* _renderer;
 
 public:
 	BaseGame();
@@ -29,6 +31,8 @@ public:
 	virtual void Begin() = 0;
 	virtual void Update() = 0;
 	virtual void End() = 0;
+
+	double GetCurrentTime();
 };
 
 #endif
