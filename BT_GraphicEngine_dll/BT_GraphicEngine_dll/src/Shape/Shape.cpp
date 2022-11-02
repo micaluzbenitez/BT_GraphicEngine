@@ -25,12 +25,13 @@ void Shape::AttachMaterial()
     // Create shader
     ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
+    material->UseMaterial();
+    material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
+
     cout << "VERTEX:" << endl;
     cout << source.VertexSource << endl;
     cout << "FRAGMENT:" << endl;
     cout << source.FragmentSource << endl;
-    material->UseMaterial();
-    material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
 }
 
 void Shape::DetachMaterial()
@@ -56,10 +57,10 @@ void Shape::CreateTriangle()
     /* GLEW buffer */
     float positions[] =
     {
-        // Positions         // Colors          // Texture coords
-        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f,  // Lower-left corner  
-         0.0f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f,  // Lower-right corner
-         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.5f, 1.0f   // Top-center corner
+        // Positions         // Colors
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // Lower-left corner  
+         0.0f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // Lower-right corner
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f  // Top-center corner
 
          /* 
          Si quisiera todos los bordes de diferente color:
@@ -90,11 +91,11 @@ void Shape::CreateSquare()
     /* GLEW buffer */
     float positions[] =
     {
-        // Positions         // Colors          // Texture coords
-        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 1.0f, // Top right
-         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f, // Bottom right
-         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f, // Bottom left
-        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 1.0f  // Top left
+        // Positions         // Colors
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // Top right
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // Bottom right
+         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // Bottom left
+        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f  // Top left
     };
 
     /* Index buffer */

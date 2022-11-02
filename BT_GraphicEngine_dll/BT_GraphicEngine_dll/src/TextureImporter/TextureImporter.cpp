@@ -1,14 +1,8 @@
 #include "TextureImporter.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
-TextureImporter::TextureImporter()
-{
-}
-
-TextureImporter::~TextureImporter()
-{
-}
-
-Texture TextureImporter::LoadTexture(const char* path, bool invertImage)
+Texture TextureImporter::LoadTexture(string path, bool invertImage)
 {
 	unsigned int textureId;
 	int textureWidth;
@@ -26,7 +20,7 @@ Texture TextureImporter::LoadTexture(const char* path, bool invertImage)
 
 	// Carga y genera la textura
 	stbi_set_flip_vertically_on_load(invertImage); // Esto es porque OpenGL espera las texturas al reves
-	unsigned char* data = stbi_load(path, &textureWidth, &textureHeight, &nrChannels, 0);
+	unsigned char* data = stbi_load(path.c_str(), &textureWidth, &textureHeight, &nrChannels, 0);
 
 	if (data)
 	{

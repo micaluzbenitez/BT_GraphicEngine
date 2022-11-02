@@ -8,7 +8,8 @@
 #include "Renderer/Renderer.h"
 #include "Input/Input.h"
 #include "CollisionManager/CollisionManager.h"
-#include "Shape/Shape.h" // --> esto despues no iria, se llamaria desde el .exe
+#include "Shape/Shape.h"
+#include "Sprite/Sprite.h"
 #include "Export.h"
 using namespace std;
 

@@ -36,7 +36,6 @@ public:
 
 	void CreateSquare();
 	void DrawSquare();
-
 };
 
 #endif   

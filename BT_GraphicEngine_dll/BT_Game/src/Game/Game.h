@@ -9,6 +9,7 @@ class Game : public BaseGame
 private:
 	Shape* triangle;
 	Shape* square;
+	Sprite* sprite;
 
 public:
 	Game();

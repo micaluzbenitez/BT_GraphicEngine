@@ -28,7 +28,7 @@ public:
     unsigned int CompilerShader(unsigned int type, const string& source);
     void CreateMaterial(const string& vertexShader, const string& fragmentShader);
     void UseMaterial();
-    void ModifyMaterial(glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::mat4 modelMatrix, glm::vec3 colorVector);
+    void ModifyMaterial(glm::mat4 projectionMatrix, glm::mat4 viewMatrix, glm::mat4 modelMatrix, glm::vec3 colorVector, unsigned int texture = 0);
     void DeleteMaterial();
 };
 
