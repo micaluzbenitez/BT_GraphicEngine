@@ -52,8 +52,7 @@ public:
 	void Rotate(float x, float y, float z);
 	void Scale(float x, float y, float z);
 
-	virtual void Draw(GLsizei vertices) = 0;
-	virtual void DrawWithIndexBuffer(GLsizei indices) = 0;
+	virtual void Draw() = 0;
 };
 
 #endif

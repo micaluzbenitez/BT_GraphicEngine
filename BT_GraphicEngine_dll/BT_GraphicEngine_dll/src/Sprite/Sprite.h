@@ -30,13 +30,10 @@ public:
 
 	void AttachMaterial();
 	void DetachMaterial();
-	void Draw(GLsizei vertices);
-	void DrawWithIndexBuffer(GLsizei indices);
+	void Draw();
 
 	void SetColor(glm::vec3);
 	glm::vec3 GetColor();
-
-	void DrawSprite();
 };
 
 #endif 

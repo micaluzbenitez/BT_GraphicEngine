@@ -60,12 +60,7 @@ void Sprite::DetachMaterial()
     material->DeleteMaterial();
 }
 
-void Sprite::Draw(GLsizei vertices)
-{
-    renderer->DrawWithoutIndexBuffer(GL_TRIANGLES, 0, vertices);
-}
-
-void Sprite::DrawWithIndexBuffer(GLsizei indices)
+void Sprite::Draw()
 {
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector, texture.ID);
     material->UseMaterial();
@@ -81,9 +76,4 @@ void Sprite::SetColor(glm::vec3 newColor)
 glm::vec3 Sprite::GetColor()
 {
     return colorVector;
-}
-
-void Sprite::DrawSprite()
-{
-    DrawWithIndexBuffer(INDEX_ARRAY_COUNT);
 }

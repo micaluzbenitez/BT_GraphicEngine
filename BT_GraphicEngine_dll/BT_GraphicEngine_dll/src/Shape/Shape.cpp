@@ -39,12 +39,7 @@ void Shape::DetachMaterial()
     material->DeleteMaterial();
 }
 
-void Shape::Draw(GLsizei vertices)
-{
-    renderer->DrawWithoutIndexBuffer(GL_TRIANGLES, 0, vertices);
-}
-
-void Shape::DrawWithIndexBuffer(GLsizei indices)
+void Shape::Draw()
 {
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
     material->UseMaterial();
@@ -80,11 +75,6 @@ void Shape::CreateTriangle()
     renderer->EnableVertexAttributes(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float)*3)); //color
 }
 
-void Shape::DrawTriangle()
-{
-    DrawWithIndexBuffer(TRIANGLE_INDEX_ARRAY_COUNT);
-}
-
 // ------------------------------------------ SQUARE ------------------------------------------
 void Shape::CreateSquare()
 {
@@ -108,9 +98,4 @@ void Shape::CreateSquare()
     renderer->BindBuffer(SQUARE_POSITIONS_ARRAY_COUNT * sizeof(float), SQUARE_INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
     renderer->EnableVertexAttributes(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, 0); //pos
     renderer->EnableVertexAttributes(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float) * 3)); //color
-}
-
-void Shape::DrawSquare()
-{
-    DrawWithIndexBuffer(SQUARE_INDEX_ARRAY_COUNT);
 }

@@ -50,10 +50,10 @@ void Game::Update()
     //if (IsKeyPressed(KEY_A)) shape->Translate(-0.1f, 0, 0);
     //if (IsKeyPressed(KEY_D)) shape->Translate( 0.1f, 0, 0);
 
-    //square->DrawSquare();
-    //triangle->DrawTriangle();
+    //square->Draw();
+    //triangle->Draw();
 
-    sprite->DrawSprite();
+    sprite->Draw();
 }
 
 void Game::End()
