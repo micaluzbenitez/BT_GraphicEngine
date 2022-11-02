@@ -64,7 +64,7 @@ void Sprite::Draw()
 {
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector, texture.ID);
     material->UseMaterial();
-    glBindTexture(GL_TEXTURE_2D, texture.ID);
+    renderer->BindTexture(GL_TEXTURE_2D, texture.ID);
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, VERTEX_SIZE, GL_UNSIGNED_INT, nullptr, VAO);
 }
 

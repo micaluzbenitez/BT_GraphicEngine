@@ -72,6 +72,11 @@ void Renderer::EnableVertexAttributes(GLuint index, GLint size, GLenum type, GLb
 	glEnableVertexAttribArray(index); // Enable vertex attrib array
 }
 
+void Renderer::BindTexture(GLenum target, GLuint texture)
+{
+	glBindTexture(target, texture);
+}
+
 void Renderer::DrawWithoutIndexBuffer(GLenum primitive, GLint offset, GLsizei count)
 {
 	// Draw vertices
