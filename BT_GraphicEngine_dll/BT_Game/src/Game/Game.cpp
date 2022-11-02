@@ -2,66 +2,48 @@
 
 Game::Game()
 {
-	shape = nullptr;
+	triangle = nullptr;
+    square = nullptr;
 }
 
 Game::~Game()
 {
-    if (shape != nullptr) {
-        shape = nullptr;
-        delete shape;
+    if (triangle != nullptr) {
+        triangle = nullptr;
+        delete triangle;
+    }
+
+    if (square != nullptr) {
+        square = nullptr;
+        delete square;
     }
 }
 
 void Game::Begin()
 {
-    shape = new Shape(renderer);
-    
-    //shape->CreateTriangle();
-    shape->CreateSquare(); 
+    triangle = new Shape(renderer);
+    triangle->CreateTriangle();
+    triangle->SetColor(glm::vec3(1, 1, 0));
+    triangle->SetPosition(1, 0, -2);
+    triangle->AttachMaterial(); // Shader    
 
-    shape->SetColor(glm::vec3(1, 1, 0)); //Amarillo listo
-    shape->SetPosition(0, 0, 0);
-    shape->AttachMaterial(); // Shader
-
-    //deltaTime = GetCurrentTime();
-    //speed = 0.1f;
-    //speedScale = 0.005f;
-    //scale = shape->GetScale().x;
+    square = new Shape(renderer);
+    square->CreateSquare();
+    square->SetColor(glm::vec3(1, 0, 0));
+    square->SetPosition(-1, 0, -2);
+    square->AttachMaterial(); // Shader
 }
 
 void Game::Update()
 {
-    //_shape->Scale(2 * time, 2 * time, 2 * time);
-    //_shape->Rotate(time, time, time);
-    //cout << _shape->GetPosition().x << endl;
-
-    //if (shape->GetPosition().x < 4)
-    //{
-    //    shape->Translate(deltaTime * speed, 0, 0);
-    //    
-    //    shape->Scale(scale - speedScale, scale - speedScale, scale - speedScale);
-    //    
-    //    //cout << _shape->GetScale().x << endl;
-    //}
-    //else
-    //{
-    //    shape->SetPosition(-1,1,0);
-    //    shape->SetScale(1, 1, 1);
-    //    scale = 1;
-    //}
-
+    // Input
     //if (IsKeyPressed(KEY_W)) shape->Translate(0,  0.1f, 0);
     //if (IsKeyPressed(KEY_S)) shape->Translate(0, -0.1f, 0);
     //if (IsKeyPressed(KEY_A)) shape->Translate(-0.1f, 0, 0);
     //if (IsKeyPressed(KEY_D)) shape->Translate( 0.1f, 0, 0);
 
-    //triangulo amarillo arriba izquierda a arriba a la derecha achicandose
-
-    //_shape->SetColor(glm::vec3(time, 0, 0));
-
-    //shape->DrawTriangle();
-    shape->DrawSquare();
+    square->DrawSquare();
+    triangle->DrawTriangle();
 }
 
 void Game::End()

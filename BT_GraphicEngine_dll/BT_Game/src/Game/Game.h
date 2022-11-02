@@ -7,12 +7,8 @@ using namespace std;
 class Game : public BaseGame
 {
 private:
-	Shape* shape;
-
-	float deltaTime = 0;
-	float speed = 0;
-	float speedScale = 0;
-	float scale = 0;
+	Shape* triangle;
+	Shape* square;
 
 public:
 	Game();
