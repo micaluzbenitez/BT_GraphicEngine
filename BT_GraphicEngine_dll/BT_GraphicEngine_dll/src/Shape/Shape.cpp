@@ -56,13 +56,16 @@ void Shape::CreateTriangle()
     /* GLEW buffer */
     float positions[] =
     {
-        -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 0
-         0.0f,  0.5f, 0.0f, 1.0f, 1.0f, 1.0f, // 1
-         0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f  // 2
-         /*
-         -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // 0 Si quisiera todos los bordes de diferente color
-         0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f, // 1
-         0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f  // 2
+        // Positions         // Colors          // Texture coords
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f,  // Lower-left corner  
+         0.0f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f,  // Lower-right corner
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.5f, 1.0f   // Top-center corner
+
+         /* 
+         Si quisiera todos los bordes de diferente color:
+        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+         0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f 
          */
     }; 
 
@@ -87,18 +90,11 @@ void Shape::CreateSquare()
     /* GLEW buffer */
     float positions[] =
     {
-        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 0
-         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 1
-         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
-        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
-
-        /*
-        // positions        // colors          // texture coords
-        1.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 1.0f,       // top right
-        2.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f,       // bottom right
-        2.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f,       // bottom left
-        1.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 1.0f        // top left
-        */
+        // Positions         // Colors          // Texture coords
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 1.0f, // Top right
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f, // Bottom right
+         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f, // Bottom left
+        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 1.0f  // Top left
     };
 
     /* Index buffer */
