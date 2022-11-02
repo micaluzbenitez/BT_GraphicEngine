@@ -87,10 +87,18 @@ void Shape::CreateSquare()
     /* GLEW buffer */
     float positions[] =
     {
-        1.5f,  -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 0
-        2.5f,  -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 1
-        2.5f,   0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
-        1.5f,   0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 0
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 1
+         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
+        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, // 2
+
+        /*
+        // positions        // colors          // texture coords
+        1.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 1.0f,       // top right
+        2.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  1.0f, 0.0f,       // bottom right
+        2.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 0.0f,       // bottom left
+        1.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f,  0.0f, 1.0f        // top left
+        */
     };
 
     /* Index buffer */
