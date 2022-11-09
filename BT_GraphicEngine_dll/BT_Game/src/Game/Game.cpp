@@ -40,6 +40,7 @@ void Game::Begin()
     //square->AttachMaterial(); // Shader
 
     sprite = new Sprite(renderer, "res/Silver.png");
+    sprite->SetColor(glm::vec3(1, 1, 1));
 }
 
 void Game::Update()
