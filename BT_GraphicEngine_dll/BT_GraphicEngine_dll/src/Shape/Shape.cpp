@@ -7,6 +7,7 @@ Shape::Shape(Renderer* newRenderer)
 
 Shape::~Shape()
 {
+    DetachMaterial();
     renderer->UnBindVertex(VAO, VBO, EBO);
 }
 
@@ -27,11 +28,6 @@ void Shape::AttachMaterial()
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
     material->UseMaterial();
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
-
-    cout << "VERTEX:" << endl;
-    cout << source.VertexSource << endl;
-    cout << "FRAGMENT:" << endl;
-    cout << source.FragmentSource << endl;
 }
 
 void Shape::DetachMaterial()
@@ -41,6 +37,7 @@ void Shape::DetachMaterial()
 
 void Shape::Draw()
 {
+    AttachMaterial();
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector);
     material->UseMaterial();
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr, VAO);

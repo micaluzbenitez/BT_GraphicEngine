@@ -26,19 +26,17 @@ Sprite::Sprite(Renderer* newRenderer, string path)
     renderer->EnableVertexAttributes(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, 0); //pos
     renderer->EnableVertexAttributes(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float) * 3)); //color
     renderer->EnableVertexAttributes(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * VERTEX_SIZE, (void*)(sizeof(float) * 6)); //texture coords
-
-    AttachMaterial();
 }
 
 Sprite::~Sprite()
 {
+    DetachMaterial();
+
     if (animation != nullptr) 
     {
         animation = nullptr;
         delete animation;
     }
-
-    DetachMaterial();
 }
 
 void Sprite::AttachMaterial()
@@ -48,11 +46,6 @@ void Sprite::AttachMaterial()
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
     material->UseMaterial();
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector, texture.ID);
-
-    cout << "VERTEX:" << endl;
-    cout << source.VertexSource << endl;
-    cout << "FRAGMENT:" << endl;
-    cout << source.FragmentSource << endl;
 }
 
 void Sprite::DetachMaterial()
@@ -62,6 +55,7 @@ void Sprite::DetachMaterial()
 
 void Sprite::Draw()
 {
+    AttachMaterial();
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector, texture.ID);
     material->UseMaterial();
     renderer->BindTexture(GL_TEXTURE_2D, texture.ID);
