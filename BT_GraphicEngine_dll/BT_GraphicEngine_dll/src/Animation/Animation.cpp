@@ -68,7 +68,7 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 
 void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount)
 {
-	length = durationInSecs / 1000; // length = durationInSecs * 1000; ???
+	length = durationInSecs * 1000; // length = durationInSecs / 1000; ???
 
 	float frameXIndex = 0;
 
@@ -88,12 +88,26 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 		frame.GetUVCoords()[3].U = ((frameX + frameXIndex) + frameWidth) / textureWidth;
 		frame.GetUVCoords()[3].V = (frameY + frameHeight) / textureHeight;
 
+		/*
+		frame.GetUVCoords()[0].U = (frameWidth * (frameX + 1)) / textureWidth;
+		frame.GetUVCoords()[0].V = (frameHeight / textureHeight) * frameY;
+
+		frame.GetUVCoords()[1].U = (frameWidth * (frameX + 1)) / textureWidth;
+		frame.GetUVCoords()[1].V = (frameHeight / textureHeight) * (frameY - 1);
+
+		frame.GetUVCoords()[2].U = (frameWidth * frameX) / textureWidth;
+		frame.GetUVCoords()[2].V = (frameHeight / textureHeight) * (frameY - 1);
+
+		frame.GetUVCoords()[3].U = (frameWidth * frameX) / textureWidth;
+		frame.GetUVCoords()[3].V = (frameHeight / textureHeight) * frameY;
+		*/
+
 		frames.push_back(frame);
 		frameXIndex += frameWidth;
 	}
 }
 
-float Animation::GetCurrentFrame()
+int Animation::GetCurrentFrame()
 {
 	return currentFrame;
 }
