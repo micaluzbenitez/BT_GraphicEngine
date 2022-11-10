@@ -1,17 +1,40 @@
 #include "Animation.h"
 
+// ------------------------------------------- FRAME -------------------------------------------
+Frame::Frame()
+{
+	uvCoords[0] = { 0.f, 0.f };
+	uvCoords[1] = { 1.f, 0.f };
+	uvCoords[2] = { 1.f, 1.f };
+	uvCoords[3] = { 0.f, 1.f };
+}
+
+Frame::~Frame()
+{
+}
+
+UVCords* Frame::GetUVCoords()
+{
+	return uvCoords;
+}
+
+// ----------------------------------------- ANIMATION -----------------------------------------
 Animation::Animation()
 {
+	currentTime = 0;
+	currentFrame = 0;
+	length = 1000;
+	frames = vector<Frame>();
 }
 
 Animation::~Animation()
 {
+	frames.clear();
 }
 
-/*
-void Animation::Update(Timer& timer)
+void Animation::Update(float timer)
 {
-	currentTime += timer.timeBetweenFrames();
+	currentTime += timer;
 
 	while (currentTime > length)
 	{
@@ -19,7 +42,7 @@ void Animation::Update(Timer& timer)
 	}
 
 	float frameLength = length / frames.size();
-	currentFrame = static_cast<int>(current / frameLength);
+	currentFrame = static_cast<int>(currentTime / frameLength);
 }
 
 void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs)
@@ -28,24 +51,24 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 
 	Frame frame;
 
-	frame.uvCoords[0].u = (frameX / textureWidth);
-	frame.uvCoords[0].v = (frameY / textureHeight);
+	frame.GetUVCoords()[0].U = (frameX / textureWidth);
+	frame.GetUVCoords()[0].V = (frameY / textureHeight);
 
-	frame.uvCoords[1].u = ((frameX + frameWidth) / textureWidth);
-	frame.uvCoords[1].v = (frameY / textureHeight);
+	frame.GetUVCoords()[1].U = ((frameX + frameWidth) / textureWidth);
+	frame.GetUVCoords()[1].V = (frameY / textureHeight);
 
-	frame.uvCoords[2].u = (frameX / textureWidth);
-	frame.uvCoords[2].v = ((frameY + frameHeight) / textureHeight);
+	frame.GetUVCoords()[2].U = (frameX / textureWidth);
+	frame.GetUVCoords()[2].V = ((frameY + frameHeight) / textureHeight);
 
-	frame.uvCoords[3].u = ((frameX + frameWidth) / textureWidth);
-	frame.uvCoords[3].v = ((frameY + frameHeight) / textureHeight);
+	frame.GetUVCoords()[3].U = ((frameX + frameWidth) / textureWidth);
+	frame.GetUVCoords()[3].V = ((frameY + frameHeight) / textureHeight);
 
 	frames.push_back(frame);
 }
 
 void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount)
 {
-	length = durationInSecs * 1000;
+	length = durationInSecs / 1000; // length = durationInSecs * 1000; ???
 
 	float frameXIndex = 0;
 
@@ -53,20 +76,29 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 	{
 		Frame frame;
 
-		frame.uvCoords[0].u = ((frameX + frameXIndex) / textureWidth);
-		frame.uvCoords[0].v = (frameY / textureHeight);
+		frame.GetUVCoords()[0].U = (frameX + frameXIndex) / textureWidth;
+		frame.GetUVCoords()[0].V = frameY / textureHeight;
 
-		frame.uvCoords[1].u = (((frameX + frameXIndex) + frameWidth) / textureWidth);
-		frame.uvCoords[1].v = (frameY / textureHeight);
+		frame.GetUVCoords()[1].U = ((frameX + frameXIndex) + frameWidth) / textureWidth;
+		frame.GetUVCoords()[1].V = frameY / textureHeight;
 
-		frame.uvCoords[2].u = ((frameX + frameXIndex) / textureWidth);
-		frame.uvCoords[2].v = ((frameY + frameHeight) / textureHeight);
+		frame.GetUVCoords()[2].U = (frameX + frameXIndex) / textureWidth;
+		frame.GetUVCoords()[2].V = (frameY + frameHeight) / textureHeight;
 
-		frame.uvCoords[3].u = (((frameX + frameXIndex) + frameWidth) / textureWidth);
-		frame.uvCoords[3].v = ((frameY + frameHeight) / textureHeight);
+		frame.GetUVCoords()[3].U = ((frameX + frameXIndex) + frameWidth) / textureWidth;
+		frame.GetUVCoords()[3].V = (frameY + frameHeight) / textureHeight;
 
 		frames.push_back(frame);
 		frameXIndex += frameWidth;
 	}
 }
-*/
+
+float Animation::GetCurrentFrame()
+{
+	return currentFrame;
+}
+
+std::vector<Frame> Animation::GetFrames()
+{
+	return frames;
+}
