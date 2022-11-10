@@ -30,15 +30,16 @@ void Game::Begin()
     triangle = new Shape(renderer);
     triangle->CreateTriangle();
     triangle->SetColor(glm::vec3(1, 1, 0));
-    triangle->SetPosition(3, 0, -2);
+    triangle->SetPosition(2, 0, -2);
     
     square = new Shape(renderer);
     square->CreateSquare();
     square->SetColor(glm::vec3(1, 0, 0));
-    square->SetPosition(-3, 0, -2);
+    square->SetPosition(-2, 0, -2);
 
     sprite = new Sprite(renderer, "res/Silver.png");
     sprite->SetColor(glm::vec3(1, 1, 1));
+    sprite->SetPosition(0, 0, -2);
 }
 
 void Game::Update()

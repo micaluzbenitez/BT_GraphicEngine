@@ -3,6 +3,9 @@
 Entity2D::Entity2D()
 {
     material = new Material();
+
+    hasCollider = false;
+    moveable = false;
 }
 
 Entity2D::~Entity2D()
@@ -11,4 +14,24 @@ Entity2D::~Entity2D()
         material = nullptr;
         delete material;
     }
+}
+
+void Entity2D::SetCollider(bool hasCollider)
+{
+	hasCollider = hasCollider;
+}
+
+void Entity2D::SetMoveable(bool moveable)
+{
+	moveable = moveable;
+}
+
+bool Entity2D::IsMoveable()
+{
+	return moveable;
+}
+
+bool Entity2D::HasCollider()
+{
+	return hasCollider;
 }
