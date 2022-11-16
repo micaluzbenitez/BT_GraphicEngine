@@ -148,5 +148,8 @@
     <None Include="..\BT_Game\shaders\Basic.shader">
       <Filter>res</Filter>
     </None>
+    <None Include="..\BT_Game\shaders\Textures.shader">
+      <Filter>res</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\BT_Game\shaders\Basic.shader" />
+    <None Include="..\BT_Game\shaders\Textures.shader" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

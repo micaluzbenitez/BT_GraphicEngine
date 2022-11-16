@@ -45,7 +45,7 @@ Sprite::~Sprite()
 void Sprite::AttachMaterial()
 {
     // Create shader
-    ShaderProgramSource source = material->ParseShader("shaders/Basic.shader");
+    ShaderProgramSource source = material->ParseShader("shaders/Textures.shader");
     material->CreateMaterial(source.VertexSource, source.FragmentSource);
     material->UseMaterial();
     material->ModifyMaterial(renderer->GetProjectionMatrix(), renderer->GetViewMatrix(), GetModelMatrix(), colorVector, texture.ID);
