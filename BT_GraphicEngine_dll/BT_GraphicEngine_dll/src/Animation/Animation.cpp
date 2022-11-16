@@ -109,6 +109,11 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 	}
 }
 
+void Animation::SetSpeed(float newSpeed)
+{
+	speed = newSpeed;
+}
+
 int Animation::GetCurrentFrame()
 {
 	return currentFrame;

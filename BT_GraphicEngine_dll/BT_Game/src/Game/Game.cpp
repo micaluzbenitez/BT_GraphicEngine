@@ -27,19 +27,20 @@ Game::~Game()
 
 void Game::Begin()
 {
-    triangle = new Shape(renderer);
-    triangle->CreateTriangle();
-    triangle->SetColor(glm::vec3(1, 1, 0));
-    triangle->SetPosition(2, 0, -2);
-    
-    square = new Shape(renderer);
-    square->CreateSquare();
-    square->SetColor(glm::vec3(1, 0, 0));
-    square->SetPosition(-2, 0, -2);
+    //triangle = new Shape(renderer);
+    //triangle->CreateTriangle();
+    //triangle->SetColor(glm::vec3(1, 1, 0));
+    //triangle->SetPosition(2, 0, -2);
+    //
+    //square = new Shape(renderer);
+    //square->CreateSquare();
+    //square->SetColor(glm::vec3(1, 0, 0));
+    //square->SetPosition(-2, 0, -2);
 
-    sprite = new Sprite(renderer, "res/Silver.png");
+    sprite = new Sprite(renderer, "res/anim.png");
     sprite->SetColor(glm::vec3(1, 1, 1));
-    sprite->SetPosition(0, 0, -2);
+    sprite->SetPosition(0, 0, 0);
+    sprite->CreateAnimation(1, 4, 1);
 }
 
 void Game::Update()
@@ -50,8 +51,9 @@ void Game::Update()
     //if (IsKeyPressed(KEY_A)) shape->Translate(-0.1f, 0, 0);
     //if (IsKeyPressed(KEY_D)) shape->Translate( 0.1f, 0, 0);
 
-    square->Draw();   
-    triangle->Draw();
+    //square->Draw();   
+    //triangle->Draw();
+    sprite->UpdateAnimation();
     sprite->Draw();
 }
 

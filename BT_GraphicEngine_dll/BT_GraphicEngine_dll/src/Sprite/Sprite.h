@@ -32,6 +32,10 @@ public:
 	void DetachMaterial();
 	void Draw();
 
+	void CreateAnimation(int rows, int cols, float speed);
+	void SetUVCoords(Frame frame);
+	void UpdateAnimation();
+
 	void SetColor(glm::vec3);
 	glm::vec3 GetColor();
 };

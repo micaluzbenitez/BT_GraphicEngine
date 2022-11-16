@@ -6,6 +6,9 @@ Sprite::Sprite(Renderer* newRenderer, string path)
     renderer = newRenderer;
     texture = TextureImporter::LoadTexture(path, true);
 
+    widthTexture = texture.width;
+    heightTexture = texture.height;
+
     float positions[] =
     {
         // Positions         // Colors          // Texture coords
@@ -60,6 +63,42 @@ void Sprite::Draw()
     material->UseMaterial();
     renderer->BindTexture(GL_TEXTURE_2D, texture.ID);
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, VERTEX_SIZE, GL_UNSIGNED_INT, nullptr, VAO);
+}
+
+void Sprite::UpdateAnimation()
+{
+    if (animation != NULL)
+    {
+        animation->Update();
+    }
+}
+
+void Sprite::CreateAnimation(int rows, int cols, float speed)
+{
+    animation = new Animation();
+    animation->SetSpeed(speed);
+    for (int y = 0; y < cols; y++)
+    {
+        for (int  x = 0; x < rows; x++)
+        {
+            animation->AddFrame(x, y, widthTexture / cols, heightTexture / rows, widthTexture, heightTexture, 0.1f);
+        }
+    }
+
+}
+
+void Sprite::SetUVCoords(Frame frame)
+{
+    float coords[8] =
+    {
+        frame.GetUVCoords()[0].U, frame.GetUVCoords()[0].V,
+        frame.GetUVCoords()[1].U, frame.GetUVCoords()[1].V,
+        frame.GetUVCoords()[2].U, frame.GetUVCoords()[2].V,
+        frame.GetUVCoords()[3].U, frame.GetUVCoords()[3].V
+    };
+
+    //enderer->BindBuffer()
+
 }
 
 void Sprite::SetColor(glm::vec3 newColor)
