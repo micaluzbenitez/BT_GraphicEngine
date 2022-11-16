@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Timer/Timer.h"
 
 Game::Game()
 {
@@ -6,6 +7,7 @@ Game::Game()
     square = nullptr;
     sprite = nullptr;
     spritesheet = nullptr;
+    time = 0;
 }
 
 Game::~Game()
@@ -60,6 +62,9 @@ void Game::Update()
     //if (IsKeyPressed(KEY_S)) shape->Translate(0, -0.1f, 0);
     //if (IsKeyPressed(KEY_A)) shape->Translate(-0.1f, 0, 0);
     //if (IsKeyPressed(KEY_D)) shape->Translate( 0.1f, 0, 0);
+
+    triangle->Rotate(0, 0, Timer::GetDeltaTime());
+    square->Rotate(0, 0, Timer::GetDeltaTime());
 
     square->Draw();   
     triangle->Draw();

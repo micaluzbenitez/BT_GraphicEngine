@@ -1,4 +1,5 @@
 #include "BaseGame.h"
+#include "Timer/Timer.h"
 
 BaseGame::BaseGame()
 {
@@ -45,6 +46,7 @@ int BaseGame::Run()
 
     while (!window->WindowShouldClose())
     {
+        Timer::Update(glfwGetTime());
         renderer->ClearScreen();   
         Update();
         renderer->SwapBuffers(window->GetWindow());

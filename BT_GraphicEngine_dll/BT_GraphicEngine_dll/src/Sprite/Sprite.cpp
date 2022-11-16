@@ -65,26 +65,26 @@ void Sprite::Draw()
     renderer->DrawWithIndexBuffer(GL_TRIANGLES, VERTEX_SIZE, GL_UNSIGNED_INT, nullptr, VAO);
 }
 
-void Sprite::UpdateAnimation()
-{
-    if (animation != NULL)
-    {
-        animation->Update();
-    }
-}
-
 void Sprite::CreateAnimation(int rows, int cols, float speed)
 {
     animation = new Animation();
     animation->SetSpeed(speed);
     for (int y = 0; y < cols; y++)
     {
-        for (int  x = 0; x < rows; x++)
+        for (int x = 0; x < rows; x++)
         {
             animation->AddFrame(x, y, widthTexture / cols, heightTexture / rows, widthTexture, heightTexture, 0.1f);
         }
     }
 
+}
+
+void Sprite::UpdateAnimation()
+{
+    if (animation != NULL)
+    {
+        animation->Update();
+    }
 }
 
 void Sprite::SetUVCoords(Frame frame)

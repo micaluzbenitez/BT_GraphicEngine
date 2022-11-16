@@ -33,7 +33,7 @@ Entity::~Entity()
 void Entity::UpdateModelMatrix()
 {
     model = glm::mat4(1.0f);
-    model *= scaleMatrix * rotationMatrix * translateMatrix;
+    model *= translateMatrix * rotationMatrix * scaleMatrix;
 }
 
 glm::mat4 Entity::GetModelMatrix()
