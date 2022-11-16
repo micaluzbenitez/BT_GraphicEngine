@@ -10,6 +10,7 @@ private:
 	Shape* triangle;
 	Shape* square;
 	Sprite* sprite;
+	Sprite* spritesheet;
 
 public:
 	Game();
