@@ -28,8 +28,9 @@ private:
 class DllApi Animation
 {
 private:
-	float currentTime;
 	int currentFrame;
+	float currentTime;
+	float speed;
 	float length;
 	vector<Frame> frames;
 
@@ -37,7 +38,7 @@ public:
 	Animation();
 	~Animation();
 
-	void Update(float timer);
+	void Update();
 	void AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
 	void AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount);
 	int GetCurrentFrame();

@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include "Timer/Timer.h"
 
 // ------------------------------------------- FRAME -------------------------------------------
 Frame::Frame()
@@ -25,6 +26,7 @@ Animation::Animation()
 	currentFrame = 0;
 	length = 1000;
 	frames = vector<Frame>();
+	speed = 1.0f;
 }
 
 Animation::~Animation()
@@ -32,9 +34,9 @@ Animation::~Animation()
 	frames.clear();
 }
 
-void Animation::Update(float timer)
+void Animation::Update()
 {
-	currentTime += timer;
+	currentTime += Timer::GetDeltaTime() * speed;
 
 	while (currentTime > length)
 	{
