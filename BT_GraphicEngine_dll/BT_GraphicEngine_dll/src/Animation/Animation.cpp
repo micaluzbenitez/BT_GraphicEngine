@@ -68,33 +68,6 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 	frames.push_back(frame);
 }
 
-void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount)
-{
-	length = durationInSecs;
-
-	float frameXIndex = 0;
-
-	for (int i = 0; i < frameCount; i++)
-	{
-		Frame frame;
-
-		frame.GetUVCoords()[0].U = ((frameX + frameXIndex) * frameWidth) / textureWidth;
-		frame.GetUVCoords()[0].V = (frameY * frameHeight) / textureHeight;
-
-		frame.GetUVCoords()[1].U = ((frameX + 1 + frameXIndex) * frameWidth) / textureWidth;
-		frame.GetUVCoords()[1].V = (frameY * frameHeight) / textureHeight;
-
-		frame.GetUVCoords()[2].U = ((frameX + frameXIndex) * frameWidth) / textureWidth;
-		frame.GetUVCoords()[2].V = ((frameY + 1) * frameHeight) / textureHeight;
-
-		frame.GetUVCoords()[3].U = ((frameX + 1 + frameXIndex) * frameWidth) / textureWidth;
-		frame.GetUVCoords()[3].V = ((frameY + 1) * frameHeight) / textureHeight;
-
-		frames.push_back(frame);
-		frameXIndex += frameWidth;
-	}
-}
-
 void Animation::SetSpeed(float newSpeed)
 {
 	speed = newSpeed;

@@ -40,7 +40,6 @@ public:
 
 	void Update();
 	void AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
-	void AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount);
 	void SetSpeed(float newSpeed);
 	int GetCurrentFrame();
 	vector<Frame> GetFrames();

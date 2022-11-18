@@ -70,6 +70,7 @@ void Sprite::CreateAnimation(int rows, int cols, float speed)
 {
     animation = new Animation();
     animation->SetSpeed(speed);
+
     for (int x = 0; x < cols; x++)
     {
         for (int y = 0; y < rows; y++)
