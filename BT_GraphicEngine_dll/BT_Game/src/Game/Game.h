@@ -9,6 +9,7 @@ class Game : public BaseGame
 private:
 	Shape* triangle;
 	Shape* square;
+	Shape* square2;
 	Sprite* sprite;
 	Sprite* spritesheet; 
 	float time;

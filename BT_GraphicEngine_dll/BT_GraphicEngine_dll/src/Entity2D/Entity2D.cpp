@@ -18,12 +18,12 @@ Entity2D::~Entity2D()
 
 void Entity2D::SetCollider(bool hasCollider)
 {
-	hasCollider = hasCollider;
+	this->hasCollider = hasCollider;
 }
 
 void Entity2D::SetMoveable(bool moveable)
 {
-	moveable = moveable;
+	this->moveable = moveable;
 }
 
 bool Entity2D::IsMoveable()
