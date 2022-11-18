@@ -42,11 +42,15 @@ int Renderer::InitGLEW()
 	if (glewInit() != GLEW_OK) return -1;
 }
 
-void Renderer::BindBuffer(GLsizeiptr sizeVertices, GLsizeiptr sizeIndices, const GLvoid* vertices, const GLvoid* indices, unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
+void Renderer::CreateBuffers(unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
 {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
+}
+
+void Renderer::BindBuffers(GLsizeiptr sizeVertices, GLsizeiptr sizeIndices, const GLvoid* vertices, const GLvoid* indices, unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
+{
 	glBindVertexArray(VAO);
 
 	// Vertex buffer
