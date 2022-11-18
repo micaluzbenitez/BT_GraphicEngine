@@ -70,14 +70,13 @@ void Sprite::CreateAnimation(int rows, int cols, float speed)
 {
     animation = new Animation();
     animation->SetSpeed(speed);
-    for (int y = 0; y < cols; y++)
+    for (int x = 0; x < cols; x++)
     {
-        for (int x = 0; x < rows; x++)
+        for (int y = 0; y < rows; y++)
         {
-            animation->AddFrame(x, y, widthTexture / cols, heightTexture / rows, widthTexture, heightTexture, 0.1f);
+            animation->AddFrame(x, y, widthTexture / cols, heightTexture / rows, widthTexture, heightTexture, 1);
         }
     }
-
 }
 
 void Sprite::UpdateAnimation()
@@ -85,6 +84,7 @@ void Sprite::UpdateAnimation()
     if (animation != NULL)
     {
         animation->Update();
+        SetUVCoords(animation->GetFrames()[animation->GetCurrentFrame()]);
     }
 }
 
@@ -98,8 +98,23 @@ void Sprite::SetUVCoords(Frame frame)
         frame.GetUVCoords()[3].U, frame.GetUVCoords()[3].V
     };
 
-    //enderer->BindBuffer()
+    float positions[] =
+    {
+        // Positions         // Colors          // Texture coords
+         0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, coords[6], coords[7], // Top right
+         0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, coords[2], coords[3], // Bottom right
+        -0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, coords[0], coords[1], // Bottom left
+        -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, coords[4], coords[5]  // Top left
+    };
 
+    /* Index buffer */
+    unsigned int indices[] =
+    {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    renderer->BindBuffers(POSITIONS_ARRAY_COUNT * sizeof(float), INDEX_ARRAY_COUNT * sizeof(unsigned int), positions, indices, VAO, VBO, EBO);
 }
 
 void Sprite::SetColor(glm::vec3 newColor)

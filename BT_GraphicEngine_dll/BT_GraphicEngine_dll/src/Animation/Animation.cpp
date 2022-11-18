@@ -49,28 +49,28 @@ void Animation::Update()
 
 void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs)
 {
-	length = durationInSecs * 1000;
+	length = durationInSecs;
 
 	Frame frame;
 
-	frame.GetUVCoords()[0].U = (frameX / textureWidth);
-	frame.GetUVCoords()[0].V = (frameY / textureHeight);
+	frame.GetUVCoords()[0].U = (frameX * frameWidth) / textureWidth;
+	frame.GetUVCoords()[0].V = (frameY * frameHeight) / textureHeight;
 
-	frame.GetUVCoords()[1].U = ((frameX + frameWidth) / textureWidth);
-	frame.GetUVCoords()[1].V = (frameY / textureHeight);
+	frame.GetUVCoords()[1].U = ((frameX + 1) * frameWidth) / textureWidth;
+	frame.GetUVCoords()[1].V = (frameY * frameHeight) / textureHeight;
 
-	frame.GetUVCoords()[2].U = (frameX / textureWidth);
-	frame.GetUVCoords()[2].V = ((frameY + frameHeight) / textureHeight);
+	frame.GetUVCoords()[2].U = (frameX * frameWidth) / textureWidth;
+	frame.GetUVCoords()[2].V = ((frameY + 1) * frameHeight) / textureHeight;
 
-	frame.GetUVCoords()[3].U = ((frameX + frameWidth) / textureWidth);
-	frame.GetUVCoords()[3].V = ((frameY + frameHeight) / textureHeight);
+	frame.GetUVCoords()[3].U = ((frameX + 1) * frameWidth) / textureWidth;
+	frame.GetUVCoords()[3].V = ((frameY + 1) * frameHeight) / textureHeight;
 
 	frames.push_back(frame);
 }
 
 void Animation::AddFrame(float frameX, float frameY, float frameWidth, float frameHeight, float textureWidth, float textureHeight, float durationInSecs, int frameCount)
 {
-	length = durationInSecs * 1000; // length = durationInSecs / 1000; ???
+	length = durationInSecs;
 
 	float frameXIndex = 0;
 
@@ -78,31 +78,17 @@ void Animation::AddFrame(float frameX, float frameY, float frameWidth, float fra
 	{
 		Frame frame;
 
-		frame.GetUVCoords()[0].U = (frameX + frameXIndex) / textureWidth;
-		frame.GetUVCoords()[0].V = frameY / textureHeight;
+		frame.GetUVCoords()[0].U = ((frameX + frameXIndex) * frameWidth) / textureWidth;
+		frame.GetUVCoords()[0].V = (frameY * frameHeight) / textureHeight;
 
-		frame.GetUVCoords()[1].U = ((frameX + frameXIndex) + frameWidth) / textureWidth;
-		frame.GetUVCoords()[1].V = frameY / textureHeight;
+		frame.GetUVCoords()[1].U = ((frameX + 1 + frameXIndex) * frameWidth) / textureWidth;
+		frame.GetUVCoords()[1].V = (frameY * frameHeight) / textureHeight;
 
-		frame.GetUVCoords()[2].U = (frameX + frameXIndex) / textureWidth;
-		frame.GetUVCoords()[2].V = (frameY + frameHeight) / textureHeight;
+		frame.GetUVCoords()[2].U = ((frameX + frameXIndex) * frameWidth) / textureWidth;
+		frame.GetUVCoords()[2].V = ((frameY + 1) * frameHeight) / textureHeight;
 
-		frame.GetUVCoords()[3].U = ((frameX + frameXIndex) + frameWidth) / textureWidth;
-		frame.GetUVCoords()[3].V = (frameY + frameHeight) / textureHeight;
-
-		/*
-		frame.GetUVCoords()[0].U = (frameWidth * (frameX + 1)) / textureWidth;
-		frame.GetUVCoords()[0].V = (frameHeight / textureHeight) * frameY;
-
-		frame.GetUVCoords()[1].U = (frameWidth * (frameX + 1)) / textureWidth;
-		frame.GetUVCoords()[1].V = (frameHeight / textureHeight) * (frameY - 1);
-
-		frame.GetUVCoords()[2].U = (frameWidth * frameX) / textureWidth;
-		frame.GetUVCoords()[2].V = (frameHeight / textureHeight) * (frameY - 1);
-
-		frame.GetUVCoords()[3].U = (frameWidth * frameX) / textureWidth;
-		frame.GetUVCoords()[3].V = (frameHeight / textureHeight) * frameY;
-		*/
+		frame.GetUVCoords()[3].U = ((frameX + 1 + frameXIndex) * frameWidth) / textureWidth;
+		frame.GetUVCoords()[3].V = ((frameY + 1) * frameHeight) / textureHeight;
 
 		frames.push_back(frame);
 		frameXIndex += frameWidth;
