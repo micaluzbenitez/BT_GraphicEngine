@@ -8,6 +8,7 @@ Game::Game()
     square2 = nullptr;
     sprite = nullptr;
     spritesheet = nullptr;
+    spritesheet2 = nullptr;
     time = 0;
 }
 
@@ -36,6 +37,11 @@ Game::~Game()
     if (spritesheet != nullptr) {
         spritesheet = nullptr;
         delete spritesheet;
+    }
+
+    if (spritesheet2 != nullptr) {
+        spritesheet2 = nullptr;
+        delete spritesheet2;
     }
 }
 
@@ -68,6 +74,11 @@ void Game::Begin()
     spritesheet->SetColor(glm::vec3(1, 1, 1));
     spritesheet->SetPosition(-1.5, -1, 13);
     spritesheet->CreateAnimation(1, 4, 1);
+
+    spritesheet2 = new Sprite(renderer, "res/anim2.png");
+    spritesheet2->SetColor(glm::vec3(1, 1, 1));
+    spritesheet2->SetPosition(1.5, -1, 13);
+    spritesheet2->CreateAnimation(1, 14, 1);
 }
 
 void Game::Update()
@@ -90,6 +101,9 @@ void Game::Update()
     
     spritesheet->UpdateAnimation();
     spritesheet->Draw();
+
+    spritesheet2->UpdateAnimation();
+    spritesheet2->Draw();
 }
 
 void Game::End()

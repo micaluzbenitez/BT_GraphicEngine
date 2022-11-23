@@ -11,7 +11,8 @@ private:
 	Shape* square;
 	Shape* square2;
 	Sprite* sprite;
-	Sprite* spritesheet; 
+	Sprite* spritesheet;
+	Sprite* spritesheet2;
 	float time;
 
 public:
