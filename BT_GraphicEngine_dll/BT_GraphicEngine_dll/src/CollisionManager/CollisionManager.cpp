@@ -54,4 +54,14 @@ void CollisionManager::Overlap(Entity2D* entity1, Entity2D* entity2) //Separa am
 								 (entity2->GetPosition() + director * overlapSpeed).z);
 		} while (CheckCollision(entity1, entity2));
 	}
+	else
+	{
+		do
+		{
+			glm::vec3 director = glm::normalize(entity1->GetPosition() - entity2->GetPosition()); //Genero el vector director para saber hacia donde puedo
+			entity1->SetPosition((entity1->GetPosition() + director * overlapSpeed).x,
+							   	 (entity1->GetPosition() + director * overlapSpeed).y,
+								 (entity1->GetPosition() + director * overlapSpeed).z);
+		} while (CheckCollision(entity2, entity1));
+	}
 }
