@@ -39,6 +39,9 @@ int Renderer::InitGLEW()
 {
 	// Init GLEW
 	if (glewInit() != GLEW_OK) return -1;
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Renderer::CreateBuffers(unsigned int& VAO, unsigned int& VBO, unsigned int& EBO)
