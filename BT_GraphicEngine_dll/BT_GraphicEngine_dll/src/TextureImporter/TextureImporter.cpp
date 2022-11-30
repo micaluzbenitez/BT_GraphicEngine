@@ -20,7 +20,7 @@ Texture TextureImporter::LoadTexture(string path, bool invertImage)
 
 	// Carga y genera la textura
 	stbi_set_flip_vertically_on_load(invertImage); // Esto es porque OpenGL espera las texturas al reves
-	unsigned char* data = stbi_load(path.c_str(), &textureWidth, &textureHeight, &nrChannels, 0);
+	unsigned char* data = stbi_load(path.c_str(), &textureWidth, &textureHeight, &nrChannels, 4);
 
 	if (data)
 	{
