@@ -52,11 +52,10 @@ void Game::Begin()
     //triangle->SetColor(glm::vec3(1, 1, 0));
     //triangle->SetPosition(1.5, 1, -1);
     
-    square = new Shape(renderer);
-    square->CreateSquare();
-    square->SetColor(glm::vec3(1, 0, 0));
-    square->SetPosition(-1.5, 0, -1);
-    square->SetScale(3, 3, 3);
+    square = new Sprite(renderer, "res/Silver.png");
+    square->SetColor(glm::vec3(1, 1, 1));
+    square->SetPosition(-15, 0, -1);//fixear el movimiento a pixeles
+    square->SetScale(10, 10, 10);
     square->SetCollider(true);
     square->SetMoveable(false);
     
@@ -73,7 +72,7 @@ void Game::Begin()
     
     sprite->SetColor(glm::vec3(1, 1, 1));
     sprite->SetPosition(1.5, -1, -1);
-    sprite->SetScale(15, 15, 15);
+    sprite->SetScale(5, 5, 5);
     sprite->SetCollider(true);
     sprite->SetMoveable(false);
     

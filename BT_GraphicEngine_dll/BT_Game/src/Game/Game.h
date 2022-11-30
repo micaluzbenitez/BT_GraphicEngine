@@ -8,7 +8,7 @@ class Game : public BaseGame
 {
 private:
 	Shape* triangle;
-	Shape* square;
+	Sprite* square;
 	Shape* square2;
 	Sprite* sprite;
 	Sprite* spritesheet;

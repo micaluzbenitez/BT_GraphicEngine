@@ -34,7 +34,7 @@ BaseGame::~BaseGame()
 
 int BaseGame::Run()
 {
-    window = new Window(640,480);
+    window = new Window(1080,720);
     renderer = new Renderer(window);
 
     window->InitLibrary();                              
