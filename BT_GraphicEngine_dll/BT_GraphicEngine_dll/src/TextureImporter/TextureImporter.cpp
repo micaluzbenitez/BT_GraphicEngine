@@ -24,7 +24,7 @@ Texture TextureImporter::LoadTexture(string path, bool invertImage)
 
 	if (data)
 	{
-		int channelType = GL_RGB;
+		int channelType = GL_RGBA;
 		switch (nrChannels)
 		{
 		case 1:
